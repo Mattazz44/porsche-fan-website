@@ -1,663 +1,332 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porsche Experience | Sport & Elegance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porsche Experience | Luxury Motorsport &amp; Engineering Archive</title>
+  <meta name="description" content="Editorial non-commercial Porsche fan-page showcasing road and track icons, interactive telemetry specifications, and motorsport history from 1948 to 2026.">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --red: #d5001c;
-            --black-dark: #0a0a0a;
-            --black-card: #141414;
-            --gray-text: #a0a0a0;
-            --transition-speed: cubic-bezier(0.25, 1, 0.5, 1);
-        }
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
 
-        /* --- Global Styles --- */
-        body {
-            background-color: var(--black-dark);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            font-weight: 300;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .btn-porsche,
-        .btn-danger-porsche {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* --- Navbar --- */
-        .navbar {
-            background: rgba(10, 10, 10, 0.85) !important;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.3s var(--transition-speed);
-        }
-
-        .logo-img {
-            height: 40px;
-        }
-
-        .nav-link {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #ccc !important;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .video-container,
-        .overlay {
-            position: absolute;
-            inset: 0;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw;
-            min-width: 177.77vh;
-            min-height: 100vh;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .overlay {
-            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.3), rgba(10, 10, 10, 0.9));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            transform: translateY(20px);
-            animation: heroFadeIn 1.2s var(--transition-speed) forwards;
-        }
-
-        .hero-content h1 {
-            font-size: 5.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            letter-spacing: 5px;
-            color: #ddd;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
-
-        @keyframes heroFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* --- Speed Line Animation (Subtle) --- */
-        .speed-line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--red), transparent);
-            background-size: 200% 100%;
-            animation: speed 3s ease-in-out infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes speed {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        /* --- Cards & Sections --- */
-        .section-title {
-            position: relative;
-            text-align: center;
-            font-weight: 700;
-            font-size: 2rem;
-            margin-bottom: 60px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--red);
-            border-radius: 2px;
-        }
-
-        .card {
-            background: var(--black-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.5s var(--transition-speed);
-        }
-
-        .card img {
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.8s var(--transition-speed);
-        }
-
-        /* --- Hover Card Sporty Elegan (Tanpa Miring) --- */
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(213, 0, 28, 0.4);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .card:hover img {
-            transform: scale(1.05);
-        }
-
-        .card-body h5,
-        .card-body h6 {
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            /* Pastikan tidak ada font-style: italic; di sini */
-        }
-
-        /* --- Buttons "Discover" dengan Efek Klik Mekanis --- */
-        .btn-porsche {
-            background: transparent;
-            color: #fff;
-            border: 1px solid #fff;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 10px 24px;
-            border-radius: 4px;
-            /* Sudut sedikit membulat agar elegan */
-            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-            display: inline-block;
-        }
-
-        .btn-porsche:hover {
-            background: #fff;
-            color: #000;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Efek saat diklik (mengecil & menyala merah) */
-        .btn-porsche:active {
-            transform: scale(0.92) translateY(0);
-            background: var(--red);
-            color: #fff;
-            border-color: var(--red);
-            box-shadow: 0 0 20px rgba(213, 0, 28, 0.8), inset 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.05s;
-        }
-
-        /* --- Button Utama (Explore Models) --- */
-        .btn-danger-porsche {
-            background-color: var(--red);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            /* Menggunakan font elegan */
-            font-weight: 600;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            padding: 14px 35px;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-danger-porsche:hover {
-            background-color: #ff1a35;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(213, 0, 28, 0.3);
-            color: white;
-        }
-
-        .fade-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--transition-speed), transform 0.8s var(--transition-speed);
-        }
-
-        .fade-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- History Section --- */
-        .history {
-            background: #111;
-            padding: 80px 0;
-        }
-
-        .counter {
-            color: var(--red);
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .counter-label {
-            font-size: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray-text);
-        }
-
-        .navbar-toggler {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 2px rgba(213, 0, 28, 0.5);
-            outline: none;
-        }
-
-        footer {
-            padding: 40px 20px;
-            background: #050505;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            color: #666;
-            letter-spacing: 1px;
-        }
-
-        /* --- Mobile Responsive Rules --- */
-        @media (max-width: 991.98px) {
-            .navbar {
-                padding: 12px 0;
-            }
-
-            .navbar-collapse {
-                background: rgba(12, 12, 12, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                padding: 18px 20px;
-                margin-top: 12px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            }
-
-            .navbar-nav {
-                text-align: center;
-                gap: 5px;
-            }
-
-            .nav-link {
-                padding: 10px 0 !important;
-                font-size: 0.85rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            }
-
-            .nav-item:last-child .nav-link {
-                border-bottom: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 100vh;
-                min-height: 100dvh;
-                padding: 100px 15px 50px;
-            }
-
-            .hero-content h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-                letter-spacing: 2px;
-                line-height: 1.15;
-            }
-
-            .hero-content p {
-                font-size: 0.85rem;
-                letter-spacing: 2.5px;
-                margin-bottom: 25px;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-                margin-bottom: 40px;
-                letter-spacing: 2px;
-            }
-
-            .card img {
-                height: 220px;
-            }
-
-            .history {
-                padding: 50px 0;
-            }
-
-            .counter {
-                font-size: 2rem;
-            }
-
-            .counter-label {
-                font-size: 0.65rem;
-                letter-spacing: 1px;
-            }
-
-            footer {
-                padding: 30px 15px;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-img {
-                height: 32px;
-            }
-
-            .hero-content h1 {
-                font-size: clamp(1.8rem, 8.5vw, 2.35rem);
-                letter-spacing: 1.5px;
-            }
-
-            .hero-content p {
-                font-size: 0.75rem;
-                letter-spacing: 1.5px;
-                line-height: 1.5;
-            }
-
-            .btn-danger-porsche {
-                padding: 12px 26px;
-                font-size: 0.78rem;
-                letter-spacing: 2px;
-            }
-
-            .card-body {
-                padding: 20px 15px;
-            }
-
-            .card-body h5 {
-                font-size: 0.92rem;
-                letter-spacing: 1.5px;
-            }
-
-            .counter {
-                font-size: 1.65rem;
-            }
-
-            .counter-label {
-                font-size: 0.6rem;
-                letter-spacing: 0.5px;
-            }
-
-            .history .btn-explore {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 12px 20px;
-            }
-        }
-    </style>
+  <script src="js/data.js" defer></script>
+  <script src="js/core.js" defer></script>
+  <script src="js/home.js" defer></script>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="asset/pngimg.com - porsche_logo_PNG9.png" class="logo-img" alt="Porsche Logo">
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="models.html">Models</a></li>
-                    <li class="nav-item"><a class="nav-link" href="performance.html">Performance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
-                </ul>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+        <span class="brand-crest">
+          <img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true">
+        </span>
+        <span class="brand-text">
+          <span class="brand-wordmark">Porsche</span>
+          <span class="brand-sub">Experience</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="models.html">Models</a></li>
+          <li><a class="nav-link" href="performance.html">Performance</a></li>
+          <li><a class="nav-link" href="history.html">History</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" id="nav-toggle" class="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <nav aria-label="Mobile primary navigation">
+      <ul class="mobile-drawer-list">
+        <li><a class="mobile-drawer-link" href="index.html" aria-current="page"><span>Overview</span><span>01</span></a></li>
+        <li><a class="mobile-drawer-link" href="models.html"><span>Models</span><span>02</span></a></li>
+        <li><a class="mobile-drawer-link" href="performance.html"><span>Performance</span><span>03</span></a></li>
+        <li><a class="mobile-drawer-link" href="history.html"><span>History</span><span>04</span></a></li>
+      </ul>
     </nav>
+    <p class="mobile-drawer-note">Non-commercial fan-made portfolio archive built with verified Porsche engineering specifications.</p>
+  </div>
 
-    <section class="hero">
-        <div class="video-container">
-            <iframe
-                src="https://www.youtube.com/embed/DZAdVY9kKbc?autoplay=1&mute=1&loop=1&playlist=DZAdVY9kKbc&controls=0"></iframe>
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-label="Hero showcase">
+      <div id="hero-media" class="hero-media">
+        <img
+          src="asset/Porsche Taycan !!.jpeg"
+          width="736"
+          height="981"
+          fetchpriority="high"
+          class="hero-img"
+          alt="Silver Porsche sports sedan cornering along a winding cliffside mountain pass"
+        >
+        <div id="hero-video-frame" class="hero-video-frame" aria-hidden="true"></div>
+      </div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-kicker">Zuffenhausen &amp; Weissach Archive</p>
+            <h1 class="hero-title">
+              <span class="hero-title-line"><span class="hero-title-word">Born</span></span>
+              <span class="hero-title-line"><span class="hero-title-word">For</span></span>
+              <span class="hero-title-line"><span class="hero-title-word">Speed</span></span>
+            </h1>
+            <p class="hero-lead">
+              Pure motorsport engineering translated for winding mountain passes, high-voltage grand touring, and 24-hour endurance tarmac.
+            </p>
+            <div class="hero-actions">
+              <a id="hero-cta" class="btn-primary magnetic-cta" href="#models">
+                <span>Inspect Model Lineup</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+                </svg>
+              </a>
+              <button type="button" id="hero-video-toggle" class="btn-ghost" aria-pressed="false">
+                Play Track Film
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <div class="hero-meta-strip">
+              <div class="hero-meta-label">Endurance Record</div>
+              <div class="hero-meta-value tabular-nums">19 Overall Le Mans Wins</div>
+            </div>
+            <a class="scroll-indicator" href="#models">
+              <span>Scroll to Showcase</span>
+              <span class="scroll-indicator-line" aria-hidden="true"></span>
+            </a>
+          </div>
         </div>
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h1>BORN FOR SPEED</h1>
-            <p>Pure Motorsport. Timeless Design.</p>
-            <a href="#models" class="btn btn-danger-porsche">Explore Models</a>
-        </div>
+      </div>
     </section>
 
-    <div class="speed-line"></div>
+    <section id="models" class="showcase-section" aria-labelledby="models-heading">
+      <div class="container">
+        <div class="showcase-header reveal">
+          <div>
+            <p class="section-kicker">Interactive Vehicle Dossier</p>
+            <h2 id="models-heading" class="section-heading">Select Your Architecture</h2>
+          </div>
 
-    <section id="models" class="container py-5 fade-section">
-        <h2 class="section-title">Porsche Road Cars</h2>
-        <div class="row g-4">
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <img src="asset/911.jpeg" class="card-img-top" alt="Porsche 911">
-                    <div class="card-body text-center">
-                        <h5>Porsche 911</h5>
-                        <a href="porsche911.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <img src="https://di-uploads-pod2.dealerinspire.com/waltersporsche/uploads/2023/06/Screen-Shot-2023-06-21-at-2.29.47-PM.png"
-                        class="card-img-top" alt="718 Spyder RS">
-                    <div class="card-body text-center">
-                        <h5>718 Spyder RS</h5>
-                        <a href="porsche718.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <img src="https://i.ds.at/7hkUyA/rs:fill:750:0/plain/2017/02/27/PorschePanTS01.jpg"
-                        class="card-img-top" alt="Panamera">
-                    <div class="card-body text-center">
-                        <h5>Panamera</h5>
-                        <a href="porschepanamera.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <img src="https://ev-database.org/img/auto/Porsche_Taycan_Turbo_S/Porsche_Taycan_Turbo_S-01@2x.jpg"
-                        class="card-img-top" alt="Taycan Turbo S">
-                    <div class="card-body text-center">
-                        <h5>Taycan Turbo S</h5>
-                        <a href="porschetaycan.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
+          <div id="showcase-tabs" class="category-tabs" role="tablist" aria-label="Vehicle categories">
+            <button type="button" class="category-tab" role="tab" id="tab-sport" data-category="sport" aria-selected="true" tabindex="0">Sport</button>
+            <button type="button" class="category-tab" role="tab" id="tab-electric" data-category="electric" aria-selected="false" tabindex="-1">Electric</button>
+            <button type="button" class="category-tab" role="tab" id="tab-classic" data-category="classic" aria-selected="false" tabindex="-1">Classic</button>
+          </div>
         </div>
+
+        <div class="showcase-grid reveal">
+          <div>
+            <div id="model-selector-list" class="model-selector-list" aria-label="Models in active category"></div>
+            <div style="margin-top: 24px;">
+              <a class="btn-ghost" href="models.html">View Complete Street Catalog</a>
+            </div>
+          </div>
+
+          <article class="showcase-stage" aria-live="polite">
+            <div class="stage-visual">
+              <img id="stage-image" class="stage-image" src="asset/porsche aesthetic.jpeg" width="736" height="864" alt="Selected Porsche model photograph">
+              <div id="stage-status" class="stage-status" hidden role="status"></div>
+            </div>
+            <div class="stage-body">
+              <div class="stage-meta-top">
+                <h3 id="stage-title" class="stage-model-title">911 GT3 RS</h3>
+                <span id="stage-year" class="stage-model-year tabular-nums">2023 - 2026</span>
+              </div>
+              <p id="stage-summary" class="stage-summary"></p>
+
+              <div class="telemetry-strip">
+                <div class="telemetry-cell">
+                  <div class="telemetry-label">0 - 100 km/h</div>
+                  <div class="telemetry-value tabular-nums">
+                    <span id="spec-accel">3.2</span><span id="spec-accel-unit" class="telemetry-unit">s</span>
+                  </div>
+                </div>
+                <div class="telemetry-cell">
+                  <div class="telemetry-label">Top Speed</div>
+                  <div class="telemetry-value tabular-nums">
+                    <span id="spec-speed">296</span><span id="spec-speed-unit" class="telemetry-unit">km/h</span>
+                  </div>
+                </div>
+                <div class="telemetry-cell">
+                  <div class="telemetry-label">Output</div>
+                  <div class="telemetry-value tabular-nums">
+                    <span id="spec-power">525</span><span id="spec-power-unit" class="telemetry-unit">PS</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stage-actions">
+                <p id="stage-drivetrain" class="stage-drivetrain"></p>
+                <a id="stage-dossier-link" class="btn-primary" href="performance.html#gt3-rs">Open 911 GT3 RS Dossier</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="performance" class="container py-5 fade-section">
-        <h2 class="section-title">Porsche Race Cars</h2>
-        <div class="row g-4 justify-content-center">
+    <section id="performance" class="engineering-section" aria-labelledby="engineering-heading">
+      <div class="container">
+        <div class="engineering-layout">
+          <div class="engineering-intro reveal">
+            <p class="section-kicker">Telemetry &amp; Engineering</p>
+            <h2 id="engineering-heading" class="section-heading">Engineered by Physics, Validated on Track</h2>
+            <p class="engineering-copy">
+              Every road flagship inherits hardware proven under 24-hour endurance stress: active downforce management, 800-volt thermal stability, and motorsport suspension kinematics.
+            </p>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img src="https://sportscar365.com/wp-content/uploads/2023/09/M23_6223_fine.jpg"
-                        class="card-img-top" alt="Porsche 963">
-                    <div class="card-body text-center">
-                        <h5>Porsche 963</h5>
-                        <a href="porsche963.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
+            <div id="subsystem-tabs" class="subsystem-nav" role="tablist" aria-label="Engineering subsystems">
+              <button type="button" class="subsystem-btn" role="tab" data-subsystem="aero" aria-selected="true" tabindex="0">
+                <span>Active Aerodynamics &amp; DRS</span>
+                <span class="subsystem-index tabular-nums">01</span>
+              </button>
+              <button type="button" class="subsystem-btn" role="tab" data-subsystem="powertrain" aria-selected="false" tabindex="-1">
+                <span>High-Voltage 800V &amp; Hybrid LMDh</span>
+                <span class="subsystem-index tabular-nums">02</span>
+              </button>
+              <button type="button" class="subsystem-btn" role="tab" data-subsystem="chassis" aria-selected="false" tabindex="-1">
+                <span>Double-Wishbone &amp; Ceramic Braking</span>
+                <span class="subsystem-index tabular-nums">03</span>
+              </button>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img src="asset/gt3 cup.jpg" class="card-img-top" alt="911 GT3 Cup">
-                    <div class="card-body text-center">
-                        <h5>911 GT3 Cup</h5>
-                        <a href="porsche991gtcup.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
+            <div style="margin-top: 28px;">
+              <a class="btn-ghost" href="performance.html">Inspect Track Weapons</a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="telemetry-dossier" aria-live="polite">
+              <div class="dossier-head">
+                <h3 id="dossier-title" class="dossier-title">992 GT3 RS Active Downforce Architecture</h3>
+                <p id="dossier-lead" class="dossier-lead"></p>
+              </div>
+              <div id="dossier-bars" class="dossier-diagram aero-bar-list"></div>
+              <table class="dossier-specs-table">
+                <caption class="sr-only">Verified Porsche engineering subsystem specifications</caption>
+                <tbody id="dossier-specs-body"></tbody>
+              </table>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img src="asset/rexy.jpg" class="card-img-top" alt="911 RSR">
-                    <div class="card-body text-center">
-                        <h5>911 RSR</h5>
-                        <a href="porsche911rsr.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
+            <div class="benchmark-row">
+              <div class="benchmark-item">
+                <div class="benchmark-num tabular-nums" data-count-target="19">19</div>
+                <p class="benchmark-label">Overall 24 Hours of Le Mans victories</p>
+              </div>
+              <div class="benchmark-item">
+                <div class="benchmark-num tabular-nums" data-count-target="30000" data-suffix="+">30,000+</div>
+                <p class="benchmark-label">Global motorsport race victories</p>
+              </div>
+              <div class="benchmark-item">
+                <div class="benchmark-num tabular-nums" data-count-target="78">78</div>
+                <p class="benchmark-label">Years of sports car engineering (1948 to 2026)</p>
+              </div>
             </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img src="asset/download.jpg" class="card-img-top" alt="935 Tribute">
-                    <div class="card-body text-center">
-                        <h5>935 Tribute</h5>
-                        <a href="tribute.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img src="asset/Porsche 911 GT1-98.jpg" class="card-img-top" alt="911 GT1">
-                    <div class="card-body text-center">
-                        <h5>911 GT1</h5>
-                        <a href="porschegt1.html" class="btn btn-porsche">Discover</a>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="history" class="history fade-section">
-        <div class="container py-4">
-            <div class="row align-items-center g-4 g-lg-5">
-                <div class="col-lg-6 mb-3 mb-lg-0">
-                    <img src="asset/lemanswin.jpg" class="img-fluid rounded shadow-lg w-100" alt="Motorsport Legacy">
-                </div>
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h2 class="mb-4">Motorsport Legacy</h2>
-                    <p class="text-secondary" style="line-height: 1.8;">Since 1951 Porsche has built one of the most
-                        successful motorsport histories in the world, dominating endurance racing and GT championships.
-                    </p>
+    <section id="history" class="timeline-home-section" aria-labelledby="history-heading">
+      <div class="container">
+        <div class="timeline-top reveal">
+          <div>
+            <p class="section-kicker">Interactive Motorsport Chronology</p>
+            <h2 id="history-heading" class="section-heading">From Gmund 1948 to Modern Hypercars</h2>
+          </div>
+          <a class="btn-ghost" href="history.html">Open Full Chronology</a>
+        </div>
 
-                    <div class="row text-center mt-4 mt-lg-5 pt-3 border-top border-dark g-2">
-                        <div class="col-4">
-                            <div class="counter" data-target="19">0</div>
-                            <p class="counter-label">Le Mans Wins</p>
-                        </div>
-                        <div class="col-4">
-                            <div class="counter" data-target="30000">0</div>
-                            <p class="counter-label">Victories</p>
-                        </div>
-                        <div class="col-4">
-                            <div class="counter" data-target="75">0</div>
-                            <p class="counter-label">Years</p>
-                        </div>
-                    </div>
+        <div id="era-rail" class="era-rail reveal" role="tablist" aria-label="Porsche historical eras"></div>
 
-                    <div class="mt-4 pt-2 text-center text-lg-start">
-                        <a href="history.html" class="btn btn-explore">Explore Legacy</a>
-                    </div>
-
-                </div>
+        <article class="timeline-viewer reveal" aria-live="polite">
+          <div class="timeline-media">
+            <img id="era-image" src="asset/porschecentre.png" width="1120" height="840" loading="lazy" alt="Porsche archival era vehicle">
+          </div>
+          <div>
+            <div id="era-year" class="timeline-era-year tabular-nums">1948</div>
+            <h3 id="era-title" class="timeline-era-title">Gmund Origins: The First Porsche Sports Car</h3>
+            <p id="era-copy" class="timeline-era-copy"></p>
+            <p id="era-fact" class="timeline-era-fact"></p>
+            <div class="timeline-controls">
+              <div class="timeline-step-btns">
+                <button type="button" id="era-prev" class="btn-ghost">Previous Era</button>
+                <button type="button" id="era-next" class="btn-ghost">Next Era</button>
+              </div>
+              <a class="btn-primary" href="history.html">Read Full History</a>
             </div>
-        </div>
+          </div>
+        </article>
+      </div>
     </section>
-    <footer>
-        <div class="container text-center">
-            <p class="mb-0 text-uppercase">© 2026 Porsche. All Rights Reserved.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+            <span class="brand-crest">
+              <img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true">
+            </span>
+            <span class="brand-text">
+              <span class="brand-wordmark">Porsche</span>
+              <span class="brand-sub">Experience</span>
+            </span>
+          </a>
+          <p class="footer-brand-note">
+            An editorial motorsport portfolio archive dedicated to Porsche road engineering, Le Mans endurance prototypes, and verified technical benchmarks.
+          </p>
         </div>
-    </footer>
 
-    <script>
-        // Intersection Observer untuk Fade In Section
-        const observerOptions = { threshold: 0.15 };
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+        <div class="footer-nav-group">
+          <div>
+            <h2 class="footer-nav-heading">Sections</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="index.html">Overview</a></li>
+              <li><a class="footer-nav-link" href="models.html">Street Models</a></li>
+              <li><a class="footer-nav-link" href="performance.html">Track Performance</a></li>
+              <li><a class="footer-nav-link" href="history.html">Motorsport History</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="footer-nav-heading">Featured Dossiers</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
+              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        // Intersection Observer & Logic untuk Counter Animasi
-        const counters = document.querySelectorAll('.counter');
-        const counterObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    let c = entry.target;
-                    let target = +c.dataset.target;
-                    let count = 0;
-                    let step = Math.max(1, Math.ceil(target / 80));
-
-                    let i = setInterval(() => {
-                        count += step;
-                        if (count >= target) {
-                            count = target;
-                            clearInterval(i);
-                        }
-                        c.textContent = target >= 1000 ? Math.floor(count / 1000) + 'K+' : count;
-                    }, 25);
-                    counterObserver.unobserve(c);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(c => counterObserver.observe(c));
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Non-commercial fan-made portfolio project. Not affiliated with or endorsed by Dr. Ing. h.c. F. Porsche AG.</p>
+        <p>Porsche Experience Archive 2026</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

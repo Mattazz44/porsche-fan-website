@@ -1,0 +1,168 @@
+:root {
+  /* Core dark asphalt and carbon surfaces */
+  --bg-void: #0a0a0a;
+  --bg-carbon: #111111;
+  --bg-panel: #161618;
+  --bg-elevated: #1c1c20;
+
+  /* Typography ink hierarchy (WCAG AA+ verified) */
+  --text-primary: #f5f5f7;
+  --text-secondary: #b8bcc4;
+  --text-muted: #9498a3;
+
+  /* Single brand accent: Porsche Guards Red */
+  --porsche-red: #d5001c;
+  --porsche-red-hover: #b80018;
+  --porsche-red-text: #ff4d5e;
+
+  /* Architectural hairlines and interactive control borders (>= 3:1 on #111111) */
+  --hairline: rgba(255, 255, 255, 0.12);
+  --hairline-subtle: rgba(255, 255, 255, 0.08);
+  --control-border: #6d717a;
+
+  /* Typography scale */
+  --font-display: 'Syne', 'Montserrat', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Radii hierarchy (R-11: structured sharp geometry, not all-pill) */
+  --radius-sharp: 2px;
+  --radius-btn: 4px;
+  --radius-pill: 999px;
+
+  /* Spacing & motion */
+  --container-max: 1320px;
+  --gutter: clamp(1rem, 3vw, 2.5rem);
+  --nav-height: 76px;
+  --ease-race: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 220ms;
+  --dur-mid: 480ms;
+  --dur-slow: 720ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: clip;
+  min-height: 100dvh;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Pointer cursor base layer (R-39) */
+a[href],
+button,
+summary,
+select,
+label[for],
+label:has(> input[type="checkbox"], > input[type="radio"]),
+[role="button"],
+[role="link"],
+[role="tab"],
+[role="menuitem"],
+[role="option"],
+[role="switch"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="range"],
+input[type="color"] {
+  cursor: pointer;
+}
+
+:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+/* High-contrast focus ring (R-32) */
+:focus-visible {
+  outline: 2px solid var(--porsche-red-text);
+  outline-offset: 3px;
+}
+
+/* Typography defaults */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p {
+  margin: 0;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

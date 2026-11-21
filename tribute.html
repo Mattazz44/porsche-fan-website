@@ -1,505 +1,189 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porsche 935 Tribute (2019) | Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porsche 935 Tribute (2019) | Race Car Dossier</title>
+  <meta name="description" content="Limited 77-unit 2019 Porsche 935 Tribute inspired by the 1978 Moby Dick Le Mans racer with a 691 bhp twin-turbo flat-six.">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --red: #d5001c;
-            --black-dark: #0a0a0a;
-            --black-card: #141414;
-            --gray-text: #a0a0a0;
-            --transition-speed: cubic-bezier(0.25, 1, 0.5, 1);
-        }
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
 
-        /* --- Global Styles --- */
-        body {
-            background-color: var(--black-dark);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* --- Navbar --- */
-        .navbar {
-            background: rgba(10, 10, 10, 0.85) !important;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 15px 0;
-            transition: all 0.3s var(--transition-speed);
-        }
-
-        .logo-img {
-            height: 40px;
-        }
-
-        .nav-link {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #ccc !important;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
-        /* --- Main Content Layout --- */
-        .detail-page-main {
-            padding-top: 120px;
-            padding-bottom: 60px;
-        }
-
-        .left-column img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-        }
-
-        /* --- Spesifikasi Card --- */
-        .specs {
-            background: var(--black-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .specs h3 {
-            color: var(--red);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            margin-top: 20px;
-        }
-
-        .specs h3:first-child {
-            margin-top: 0;
-        }
-
-        .specs p {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 15px;
-            color: #fff;
-        }
-
-        .specs p:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        /* --- Right Column Typography --- */
-        .right-column h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .right-column h3 {
-            font-size: 1.1rem;
-            color: var(--red);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .right-column p {
-            color: #ccc;
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        blockquote {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #fff;
-            border-left: 4px solid var(--red);
-            padding-left: 20px;
-            margin: 40px 0;
-            background: linear-gradient(90deg, rgba(213, 0, 28, 0.1) 0%, transparent 100%);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* --- Gallery Section --- */
-        .gallery {
-            margin-top: 80px;
-        }
-
-        .gallery h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .gallery h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--red);
-            border-radius: 2px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            position: relative;
-            aspect-ratio: 16/9;
-            /* Memastikan semua gambar galeri seragam proporsinya */
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s var(--transition-speed);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* --- Scroll Animation (Fade & Slide) --- */
-        .fade-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--transition-speed), transform 0.8s var(--transition-speed);
-        }
-
-        .fade-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 40px 20px;
-            background: #050505;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            color: #666;
-            letter-spacing: 1px;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .navbar-toggler {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 2px rgba(213, 0, 28, 0.5);
-            outline: none;
-        }
-
-        /* --- Mobile Responsive Rules --- */
-        @media (max-width: 991.98px) {
-            .navbar {
-                padding: 12px 0;
-            }
-
-            .navbar-collapse {
-                background: rgba(12, 12, 12, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                padding: 18px 20px;
-                margin-top: 12px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            }
-
-            .navbar-nav {
-                text-align: center;
-                gap: 5px;
-            }
-
-            .nav-link {
-                padding: 10px 0 !important;
-                font-size: 0.85rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            }
-
-            .nav-item:last-child .nav-link {
-                border-bottom: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .detail-page-main {
-                padding-top: 90px;
-                padding-bottom: 35px;
-            }
-
-            .left-column img {
-                margin-bottom: 20px;
-            }
-
-            .specs {
-                padding: 20px 18px;
-            }
-
-            .specs h3 {
-                font-size: 0.75rem;
-                letter-spacing: 1.5px;
-            }
-
-            .specs p {
-                font-size: 0.92rem;
-                padding-bottom: 12px;
-            }
-
-            .right-column h2 {
-                font-size: clamp(1.4rem, 6vw, 1.8rem);
-                letter-spacing: 1.5px;
-                line-height: 1.25;
-                margin-bottom: 12px;
-            }
-
-            .right-column h3 {
-                font-size: 0.95rem;
-                letter-spacing: 1px;
-                margin-bottom: 18px;
-            }
-
-            .right-column p {
-                font-size: 0.92rem;
-                line-height: 1.7;
-                margin-bottom: 20px;
-            }
-
-            blockquote {
-                font-size: 0.95rem;
-                margin: 25px 0;
-                padding: 15px 16px;
-                border-left-width: 3px;
-            }
-
-            .gallery {
-                margin-top: 45px;
-            }
-
-            .gallery h2 {
-                font-size: 1.5rem;
-                margin-bottom: 25px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            footer {
-                padding: 30px 15px;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-img {
-                height: 32px;
-            }
-
-            .specs {
-                padding: 16px 14px;
-            }
-
-            .specs p {
-                font-size: 0.86rem;
-            }
-
-            .right-column h2 {
-                font-size: clamp(1.3rem, 7vw, 1.6rem);
-            }
-        }
-    </style>
+  <script src="js/core.js" defer></script>
+  <script src="js/subpages.js" defer></script>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="asset/pngimg.com - porsche_logo_PNG9.png" class="logo-img" alt="Porsche Logo">
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="models.html">Models</a></li>
-                    <li class="nav-item"><a class="nav-link" href="performance.html">Performance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
-                </ul>
-            </div>
-        </div>
+  <header class="site-header is-solid">
+    <div class="container nav-bar">
+      <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+        <span class="brand-crest"><img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true"></span>
+        <span class="brand-text"><span class="brand-wordmark">Porsche</span><span class="brand-sub">Experience</span></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="models.html">Models</a></li>
+          <li><a class="nav-link" href="performance.html" aria-current="page">Performance</a></li>
+          <li><a class="nav-link" href="history.html">History</a></li>
+        </ul>
+      </nav>
+      <button type="button" id="nav-toggle" class="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <nav aria-label="Mobile primary navigation">
+      <ul class="mobile-drawer-list">
+        <li><a class="mobile-drawer-link" href="index.html"><span>Overview</span><span>01</span></a></li>
+        <li><a class="mobile-drawer-link" href="models.html"><span>Models</span><span>02</span></a></li>
+        <li><a class="mobile-drawer-link" href="performance.html" aria-current="page"><span>Performance</span><span>03</span></a></li>
+        <li><a class="mobile-drawer-link" href="history.html"><span>History</span><span>04</span></a></li>
+      </ul>
+    </nav>
+    <p class="mobile-drawer-note">Non-commercial fan-made portfolio archive built with verified Porsche engineering specifications.</p>
+  </div>
+
+  <main id="main-content" class="detail-main container" tabindex="-1">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Overview</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="performance.html">Track Performance</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Porsche 935 Tribute (2019)</li>
+      </ol>
     </nav>
 
-    <main class="detail-page-main container">
-        <div class="row g-5">
-
-            <div class="col-lg-5 left-column fade-section">
-                <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/Porsche-935-Tribute-Profile-Large.png"
-                    alt="Side profile of the Porsche 935 Tribute">
-
-                <div class="specs">
-                    <h3>MODEL</h3>
-                    <p>Porsche 935 Tribute</p>
-
-                    <h3>YEAR</h3>
-                    <p>2019</p>
-
-                    <h3>ENGINE</h3>
-                    <p>3.8 L Twin-Turbo Flat-6</p>
-
-                    <h3>POWER</h3>
-                    <p>691 bhp (700 hp) @ 7000 rpm</p>
-
-                    <h3>TORQUE</h3>
-                    <p>553 ft lbs @ 2500 rpm</p>
-
-                    <h3>WEIGHT</h3>
-                    <p>~1,380 kg</p>
-
-                    <h3>PRODUCTION</h3>
-                    <p>77 units</p>
-                </div>
-            </div>
-
-            <div class="col-lg-7 right-column fade-section" style="transition-delay: 0.2s;">
-                <h2>Porsche 935 Tribute (2019)</h2>
-                <h3>Homage To ‘Moby Dick’ Race Car – The New Porsche 935</h3>
-
-                <p><strong>Official Premiere:</strong> September 27, 2018, Rennsport Reunion, Laguna Seca, USA</p>
-
-                <p>The 935 tribute was a non-street-legal collector’s car built in a limited series of only 77 units. It
-                    was based on the 911 GT2 RS high-performance sports car, equipped with its state-of-the-art
-                    3.8-litre six-cylinder twin-turbo engine. The bodywork is a modern interpretation of the legendary
-                    Porsche 935/78 Le Mans race car, famously nicknamed "Moby Dick" for its elongated shape and massive
-                    fairings.</p>
-
-                <blockquote>"This spectacular car is a birthday present from Porsche Motorsport to fans all over the
-                    world."</blockquote>
-
-                <p>Like a true race car, it comes standard with a driver’s seat, a welded-in safety cage, an air jack
-                    system, and a fire extinguishing system. The aerodynamics are a completely new development, with
-                    many exterior details paying tribute to winning vehicles from Porsche's motor racing history.</p>
-
-                <h2 class="mt-5">Race Results</h2>
-                <h3>2019 Porsche Motorsport GT2 Supersportscar Weekend at Spa-Francorchamps</h3>
-
-                <p>Held on July 26 and 27, 2019, the “Porsche Motorsport GT2 Supersportscar Weekend” was a one-off event
-                    where the new 935 made its competitive debut. Driver Egidio Perfetti masterfully piloted his 935 to
-                    victory in both 30-minute races, showcasing the car's incredible performance right out of the box
-                    against a field of 911 GT2 RS Clubsport cars.</p>
-            </div>
-
+    <div class="detail-grid">
+      <aside class="detail-aside reveal">
+        <div class="detail-profile-frame is-photo">
+          <img
+            src="asset/download.jpg"
+            width="736"
+            height="736"
+            alt="Porsche 935 Tribute Martini livery race car"
+          >
         </div>
 
-        <section class="gallery fade-section">
-            <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190725-spa-10-copyright-porsche.jpg"
-                        alt="Porsche 935 Tribute on track">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190727-spa-01-copyright-porsche.jpg"
-                        alt="Top view of the Porsche 935 Tribute">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190726-spa-04-copyright-porsche.jpg"
-                        alt="Porsche 935 Tribute in the pit garage">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190726-spa-02-copyright-porsche.jpg"
-                        alt="Action shot of the Porsche 935 on circuit">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190726-spa-07-copyright-porsche.jpg"
-                        alt="Rear view of the Porsche 935">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190726-spa-05-copyright-porsche.jpg"
-                        alt="Porsche 935 driving on track">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190725-spa-08-copyright-porsche.jpg"
-                        alt="Close-up of the Porsche 935's front">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-935-mentos-2019-spa-copyright-porsche.jpg"
-                        alt="Porsche 935 with Mentos livery">
-                </div>
-            </div>
+        <section class="spec-sheet" aria-label="Technical specifications">
+          <h2 class="spec-sheet-title">Technical Specifications</h2>
+          <dl class="spec-list tabular-nums">
+            <div class="spec-row"><dt>Model</dt><dd>Porsche 935 Tribute</dd></div>
+            <div class="spec-row"><dt>Year</dt><dd>2019</dd></div>
+            <div class="spec-row"><dt>Engine</dt><dd>3.8L Twin-Turbo Flat-6</dd></div>
+            <div class="spec-row"><dt>Power</dt><dd>691 bhp (700 PS) @ 7,000 rpm</dd></div>
+            <div class="spec-row"><dt>Torque</dt><dd>553 lb-ft @ 2,500 rpm</dd></div>
+            <div class="spec-row"><dt>Weight</dt><dd>~1,380 kg</dd></div>
+            <div class="spec-row"><dt>Production</dt><dd>77 units</dd></div>
+          </dl>
         </section>
-    </main>
+      </aside>
 
-    <footer>
-        <div class="container text-uppercase">
-            <p class="mb-0">&copy; 2026 Porsche. All rights reserved.</p>
+      <article class="detail-article reveal">
+        <h1>Porsche 935 Tribute (2019)</h1>
+        <p class="detail-subtitle">Homage to the 1978 Moby Dick Le Mans Racer</p>
+        <p class="detail-class"><strong>Official Premiere:</strong> September 27, 2018, Rennsport Reunion, Laguna Seca, USA</p>
+
+        <p>
+          Produced in a limited series of 77 track-only examples, the 2019 Porsche 935 Tribute is based on the 911 GT2 RS and its 3.8-liter twin-turbocharged flat-six. Its elongated carbon-fiber bodywork pays direct tribute to the legendary 1978 Porsche 935/78 "Moby Dick" endurance car.
+        </p>
+
+        <blockquote>
+          "This car is a birthday present from Porsche Motorsport to fans all over the world."
+        </blockquote>
+
+        <p>
+          Built as a pure circuit machine, it comes fitted with a welded safety cage, racing bucket seat, air-jack system, and onboard fire extinguisher. Exterior aerodynamic details echo historic Porsche endurance winners, from wheel aero covers to rear LED wing endplates.
+        </p>
+
+        <h2>Race Results: Spa-Francorchamps Debut</h2>
+        <p>
+          During the July 2019 Porsche Motorsport GT2 Supersportscar Weekend at Spa-Francorchamps, Egidio Perfetti drove his 935 Tribute to victory in both 30-minute races against a field of 911 GT2 RS Clubsport entries.
+        </p>
+      </article>
+    </div>
+
+    <section class="gallery-section reveal" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="section-heading">Gallery</h2>
+      <div class="gallery-grid">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 935 Tribute Martini livery on banking">
+          <img src="asset/download.jpg" width="736" height="736" loading="lazy" alt="Porsche 935 Tribute in Martini racing livery">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 935 Tribute on track at Spa">
+          <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190725-spa-10-copyright-porsche.jpg" data-fallback="asset/download.jpg" width="1200" height="800" loading="lazy" alt="Porsche 935 Tribute accelerating at Spa-Francorchamps">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 935 Tribute top view">
+          <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190727-spa-01-copyright-porsche.jpg" data-fallback="asset/download.jpg" width="1200" height="800" loading="lazy" alt="Elevated rear view of the Porsche 935 Tribute">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 935 Tribute pit lane">
+          <img src="https://www.stuttcars.com/wp-content/uploads/2021/07/stuttcars-190726-spa-04-copyright-porsche.jpg" data-fallback="asset/download.jpg" width="1200" height="800" loading="lazy" alt="Porsche 935 Tribute inside the pit garage">
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="gallery-lightbox" class="lightbox-dialog" aria-label="Image viewer">
+    <div class="lightbox-frame">
+      <div class="lightbox-bar">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <div class="timeline-step-btns">
+          <button type="button" id="lightbox-prev" class="btn-ghost">Previous</button>
+          <button type="button" id="lightbox-next" class="btn-ghost">Next</button>
+          <button type="button" id="lightbox-close" class="btn-primary">Close</button>
         </div>
-    </footer>
+      </div>
+      <img id="lightbox-img" class="lightbox-img" src="asset/download.jpg" width="1200" height="675" alt="Selected Porsche gallery photograph">
+    </div>
+  </dialog>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
-    </script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+            <span class="brand-crest"><img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true"></span>
+            <span class="brand-text"><span class="brand-wordmark">Porsche</span><span class="brand-sub">Experience</span></span>
+          </a>
+          <p class="footer-brand-note">An editorial motorsport portfolio archive dedicated to Porsche road engineering, Le Mans endurance prototypes, and verified technical benchmarks.</p>
+        </div>
+        <div class="footer-nav-group">
+          <div>
+            <h2 class="footer-nav-heading">Sections</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="index.html">Overview</a></li>
+              <li><a class="footer-nav-link" href="models.html">Street Models</a></li>
+              <li><a class="footer-nav-link" href="performance.html">Track Performance</a></li>
+              <li><a class="footer-nav-link" href="history.html">Motorsport History</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="footer-nav-heading">Featured Dossiers</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
+              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Non-commercial fan-made portfolio project. Not affiliated with or endorsed by Dr. Ing. h.c. F. Porsche AG.</p>
+        <p>Porsche Experience Archive 2026</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

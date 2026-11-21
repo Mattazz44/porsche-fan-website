@@ -2,421 +2,308 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porsche | Track Performance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porsche Experience | Track Performance &amp; Race Cars</title>
+  <meta name="description" content="Porsche Motorsport track weapons from the 911 GT3 RS and 718 Cayman GT4 RS to the 963 LMDh, 99X Electric, 911 RSR, and 911 GT1-98.">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --red: #d5001c;
-            --black-dark: #0a0a0a;
-            --transition-race: cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
 
-        body {
-            background-color: var(--black-dark);
-            font-family: 'Inter', sans-serif;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            background: rgba(10, 10, 10, 0.9) !important;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 0;
-        }
-
-        .logo-img {
-            height: 40px;
-        }
-
-        .nav-link {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #666666 !important;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
-        .nav-link.active-menu {
-            color: #ffffff !important;
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-link.active-menu::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--red);
-        }
-
-        /* --- PAGE HEADER --- */
-        .page-header {
-            padding: 150px 0 60px;
-            text-align: center;
-            background: linear-gradient(180deg, #111 0%, var(--black-dark) 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .page-header h1 {
-            font-weight: 900;
-            font-size: 3.5rem;
-            letter-spacing: -1px;
-        }
-
-        .page-header span {
-            color: var(--red);
-        }
-
-        /* --- PERFORMANCE CARDS --- */
-        .perf-card {
-            position: relative;
-            height: 450px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            margin-bottom: 30px;
-            cursor: pointer;
-        }
-
-        .perf-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.8s var(--transition-race);
-            z-index: 1;
-        }
-
-        .perf-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
-            z-index: 2;
-            transition: background 0.5s ease;
-        }
-
-        .perf-card:hover .perf-bg {
-            transform: scale(1.05) rotate(1deg);
-        }
-
-        .perf-card:hover .perf-overlay {
-            background: linear-gradient(0deg, rgba(213, 0, 28, 0.85) 0%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%);
-        }
-
-        .perf-content {
-            position: relative;
-            z-index: 3;
-            padding: 40px;
-            transform: translateY(20px);
-            transition: transform 0.5s var(--transition-race);
-        }
-
-        .perf-card:hover .perf-content {
-            transform: translateY(0);
-        }
-
-        .perf-badge {
-            background: white;
-            color: black;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 10px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            display: inline-block;
-            transform: skew(-10deg);
-        }
-
-        .perf-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        /* --- ANIMATIONS --- */
-        .anim-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s var(--transition-race), transform 1s var(--transition-race);
-        }
-
-        .anim-show {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        .navbar-toggler {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 2px rgba(213, 0, 28, 0.5);
-            outline: none;
-        }
-
-        /* --- MOBILE RESPONSIVE RULES --- */
-        @media (max-width: 991.98px) {
-            .navbar {
-                padding: 12px 0;
-            }
-
-            .navbar-collapse {
-                background: rgba(12, 12, 12, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                padding: 18px 20px;
-                margin-top: 12px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            }
-
-            .navbar-nav {
-                text-align: center;
-                gap: 5px;
-            }
-
-            .nav-link {
-                padding: 10px 0 !important;
-                font-size: 0.85rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            }
-
-            .nav-item:last-child .nav-link {
-                border-bottom: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-header {
-                padding: 100px 15px 40px;
-            }
-
-            .page-header h1 {
-                font-size: clamp(2rem, 7vw, 2.6rem);
-                letter-spacing: -0.5px;
-            }
-
-            .page-header p {
-                font-size: 0.95rem !important;
-            }
-
-            .perf-card {
-                height: 380px;
-                margin-bottom: 24px;
-            }
-
-            .perf-content {
-                padding: 24px 20px;
-                transform: translateY(0);
-            }
-
-            .perf-title {
-                font-size: clamp(1.4rem, 6vw, 1.8rem);
-            }
-
-            footer {
-                padding: 30px 15px;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-img {
-                height: 32px;
-            }
-
-            .page-header {
-                padding: 85px 15px 30px;
-            }
-
-            .page-header h1 {
-                font-size: clamp(1.75rem, 8vw, 2.2rem);
-            }
-
-            .perf-card {
-                height: 340px;
-            }
-
-            .perf-content {
-                padding: 20px 16px;
-            }
-
-            .perf-title {
-                font-size: 1.35rem;
-            }
-
-            .perf-content p {
-                font-size: 0.82rem !important;
-            }
-        }
-
-        footer {
-            background-color: #050505;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            text-align: center;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #555;
-        }
-    </style>
+  <script src="js/core.js" defer></script>
+  <script src="js/subpages.js" defer></script>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="asset/pngimg.com - porsche_logo_PNG9.png" class="logo-img" alt="Porsche Logo">
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="models.html">Models</a></li>
-                    <li class="nav-item"><a class="nav-link active-menu" href="performance.html">Performance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
-                </ul>
-            </div>
-        </div>
+  <header class="site-header is-solid">
+    <div class="container nav-bar">
+      <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+        <span class="brand-crest">
+          <img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true">
+        </span>
+        <span class="brand-text">
+          <span class="brand-wordmark">Porsche</span>
+          <span class="brand-sub">Experience</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="models.html">Models</a></li>
+          <li><a class="nav-link" href="performance.html" aria-current="page">Performance</a></li>
+          <li><a class="nav-link" href="history.html">History</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" id="nav-toggle" class="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <nav aria-label="Mobile primary navigation">
+      <ul class="mobile-drawer-list">
+        <li><a class="mobile-drawer-link" href="index.html"><span>Overview</span><span>01</span></a></li>
+        <li><a class="mobile-drawer-link" href="models.html"><span>Models</span><span>02</span></a></li>
+        <li><a class="mobile-drawer-link" href="performance.html" aria-current="page"><span>Performance</span><span>03</span></a></li>
+        <li><a class="mobile-drawer-link" href="history.html"><span>History</span><span>04</span></a></li>
+      </ul>
     </nav>
+    <p class="mobile-drawer-note">Non-commercial fan-made portfolio archive built with verified Porsche engineering specifications.</p>
+  </div>
 
-    <header class="page-header anim-up">
-        <div class="container">
-            <h1>Track <span>Weapons</span></h1>
-            <p class="text-secondary fs-5 mt-3">No compromises. Engineered purely for the checkered flag.</p>
-        </div>
+  <main id="main-content" tabindex="-1">
+    <header class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li><a href="index.html">Overview</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">Track Performance</li>
+          </ol>
+        </nav>
+        <h1 class="page-hero-title">Track Weapons</h1>
+        <p class="page-hero-lead">
+          No compromises. Motorsport machines built around wind-tunnel downforce, endurance durability, and high-voltage energy recovery.
+        </p>
+      </div>
     </header>
 
-    <section class="py-5">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-lg-6 anim-up" style="transition-delay: 0.1s;">
-                    <a href="" class="text-decoration-none d-block">
-                        <div class="perf-card">
-                            <div class="perf-bg"
-                                style="background-image: url('https://res.cloudinary.com/dmwcbhehi/image/upload/c_thumb,w_3840,g_auto/f_auto/q_auto/v1/20230907-PorscheGT3RR_Profile_1920x1080_azlgmi?_a=BAVMn6ID0');">
-                            </div>
-                            <div class="perf-overlay"></div>
-                            <div class="perf-content">
-                                <div class="perf-badge">GT RACING</div>
-                                <h3 class="perf-title">911 GT3 RS</h3>
-                                <p class="text-light mt-3 mb-0" style="font-size: 1rem; opacity: 0.8;">Aerodynamics
-                                    pushed to the absolute limit. Street-legal, completely track-focused.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 anim-up" style="transition-delay: 0.2s;">
-                    <a href="" class="text-decoration-none d-block">
-                        <div class="perf-card">
-                            <div class="perf-bg"
-                                style="background-image: url('https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_690x388/dam/pnr/2024/Motorsports/963-test/M24_0590_fine.jpg/jcr:content/M24_0590_fine.jpg');">
-                            </div>
-                            <div class="perf-overlay"></div>
-                            <div class="perf-content">
-                                <div class="perf-badge">LMDh / HYPERCAR</div>
-                                <h3 class="perf-title">963 PROTOTYPE</h3>
-                                <p class="text-light mt-3 mb-0" style="font-size: 1rem; opacity: 0.8;">The V8 Hybrid
-                                    endurance monster fighting for global supremacy at Le Mans.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 anim-up" style="transition-delay: 0.1s;">
-                    <a href="" class="text-decoration-none d-block">
-                        <div class="perf-card">
-                            <div class="perf-bg"
-                                style="background-image: url('https://porschepictures.flowcenter.de/pmdb/thumbnail.cgi?id=308272&w=1035&h=582&crop=1&public=1&cs=9a89097f26e3ead8');">
-                            </div>
-                            <div class="perf-overlay"></div>
-                            <div class="perf-content">
-                                <div class="perf-badge">MID-ENGINE TRACK</div>
-                                <h3 class="perf-title">718 CAYMAN GT4 RS</h3>
-                                <p class="text-light mt-3 mb-0" style="font-size: 1rem; opacity: 0.8;">Perfectly
-                                    balanced, screaming naturally aspirated flat-six. The ultimate canyon carver.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 anim-up" style="transition-delay: 0.2s;">
-                    <a href="" class="text-decoration-none d-block">
-                        <div class="perf-card">
-                            <div class="perf-bg"
-                                style="background-image: url('https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_1080x624/dam/pnr/2022/Motorsports/Formula-E/99X-Electric-Gen-3/NR_5.jpeg/jcr:content/NR_5.jpeg');">
-                            </div>
-                            <div class="perf-overlay"></div>
-                            <div class="perf-content">
-                                <div class="perf-badge">FULL ELECTRIC RACING</div>
-                                <h3 class="perf-title">99X ELECTRIC</h3>
-                                <p class="text-light mt-3 mb-0" style="font-size: 1rem; opacity: 0.8;">Forging the
-                                    future of high-voltage performance in the FIA Formula E World Championship.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+    <section class="container track-dossier-list" aria-label="Primary performance dossiers">
+      <article id="gt3-rs" class="track-dossier-row reveal">
+        <div class="track-dossier-media">
+          <img
+            src="asset/porsche aesthetic.jpeg"
+            width="736"
+            height="864"
+            alt="Porsche 911 GT3 RS track profile with active rear wing"
+          >
         </div>
+        <div class="track-dossier-body">
+          <div>
+            <span class="catalog-card-tag">GT Racing / Active Aero</span>
+            <h2 class="catalog-card-title">911 GT3 RS (992)</h2>
+            <p class="catalog-card-desc">
+              A central nose-mounted radiator frees space for stepless front diffuser flaps working in balance with a hydraulically controlled DRS rear wing.
+            </p>
+          </div>
+          <div class="catalog-card-specs tabular-nums">
+            <div><span class="mini-spec-label">Downforce (285 km/h)</span><span class="mini-spec-value">860 kg</span></div>
+            <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.2 s</span></div>
+            <div><span class="mini-spec-label">Output</span><span class="mini-spec-value">525 PS</span></div>
+          </div>
+          <div>
+            <a class="btn-primary" href="porsche991gtcup.html">Compare With 911 GT3 Cup</a>
+          </div>
+        </div>
+      </article>
+
+      <article id="963" class="track-dossier-row reveal">
+        <div class="track-dossier-media">
+          <img
+            src="asset/porsche963.png"
+            width="960"
+            height="540"
+            loading="lazy"
+            alt="Porsche 963 LMDh hybrid prototype in factory Penske livery"
+          >
+        </div>
+        <div class="track-dossier-body">
+          <div>
+            <span class="catalog-card-tag">LMDh / Hypercar</span>
+            <h2 class="catalog-card-title">Porsche 963 Prototype</h2>
+            <p class="catalog-card-desc">
+              Built on a Multimatic carbon monocoque for WEC and IMSA GTP endurance competition, mating a 4.6-liter twin-turbo V8 to a standardized hybrid system.
+            </p>
+          </div>
+          <div class="catalog-card-specs tabular-nums">
+            <div><span class="mini-spec-label">Combined Power</span><span class="mini-spec-value">~680 PS</span></div>
+            <div><span class="mini-spec-label">Min Weight</span><span class="mini-spec-value">1,030 kg</span></div>
+            <div><span class="mini-spec-label">Gearbox</span><span class="mini-spec-value">7-Spd Xtrac</span></div>
+          </div>
+          <div>
+            <a class="btn-primary" href="porsche963.html">Open Porsche 963 Dossier</a>
+          </div>
+        </div>
+      </article>
+
+      <article id="gt4-rs" class="track-dossier-row reveal">
+        <div class="track-dossier-media">
+          <img
+            src="asset/Porsche 718 Spyder RS.jpeg"
+            width="736"
+            height="981"
+            loading="lazy"
+            alt="Porsche 718 RS mid-engine track chassis with carbon hood"
+          >
+        </div>
+        <div class="track-dossier-body">
+          <div>
+            <span class="catalog-card-tag">Mid-Engine Track</span>
+            <h2 class="catalog-card-title">718 Cayman GT4 RS</h2>
+            <p class="catalog-card-desc">
+              Combines mid-engine rotational balance with the 9,000 rpm naturally aspirated flat-six, forged center-lock wheels, and NACA brake cooling ducts.
+            </p>
+          </div>
+          <div class="catalog-card-specs tabular-nums">
+            <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.4 s</span></div>
+            <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">315 km/h</span></div>
+            <div><span class="mini-spec-label">Output</span><span class="mini-spec-value">500 PS</span></div>
+          </div>
+          <div>
+            <a class="btn-primary" href="porsche718.html">Compare With 718 Spyder RS</a>
+          </div>
+        </div>
+      </article>
+
+      <article id="99x-electric" class="track-dossier-row reveal">
+        <div class="track-dossier-media">
+          <img
+            src="asset/Porsche Taycan !!.jpeg"
+            width="736"
+            height="981"
+            loading="lazy"
+            alt="Porsche high-voltage electric performance vehicle in motion"
+          >
+        </div>
+        <div class="track-dossier-body">
+          <div>
+            <span class="catalog-card-tag">FIA Formula E Gen3 Evo</span>
+            <h2 class="catalog-card-title">Porsche 99X Electric</h2>
+            <p class="catalog-card-desc">
+              High-voltage electric single-seater featuring 350 kW Attack Mode AWD launches and up to 600 kW regenerative braking recovery.
+            </p>
+          </div>
+          <div class="catalog-card-specs tabular-nums">
+            <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">~2.0 s</span></div>
+            <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">320+ km/h</span></div>
+            <div><span class="mini-spec-label">Peak Regen</span><span class="mini-spec-value">600 kW</span></div>
+          </div>
+          <div>
+            <a class="btn-primary" href="porschetaycan.html">Inspect 800V Road Transfer</a>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <footer>
-        <div class="container text-uppercase">
-            <p class="mb-0">&copy; 2026 Porsche. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <section class="container catalog-section" aria-labelledby="archive-race-heading">
+      <p class="section-kicker">Dedicated Motorsport Dossiers</p>
+      <h2 id="archive-race-heading" class="section-heading" style="margin-bottom: 28px;">Factory &amp; Customer Race Archive</h2>
+      <div class="catalog-list">
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/rexy.jpg" width="736" height="1104" loading="lazy" alt="Porsche 911 RSR race car under floodlights">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">LM GTE / GTLM</span>
+              <h3 class="catalog-card-title">Porsche 911 RSR</h3>
+              <p class="catalog-card-desc">Mid-rear 4.2-liter naturally aspirated flat-six engineered for large underbody rear diffuser packaging and Le Mans class wins.</p>
+            </div>
+            <a class="btn-ghost" href="porsche911rsr.html">Open 911 RSR Dossier</a>
+          </div>
+        </article>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const animObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('anim-show');
-                    animObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.anim-up').forEach(el => animObserver.observe(el));
-    </script>
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/gt3 cup.jpg" width="736" height="736" loading="lazy" alt="Porsche 911 GT3 Cup 992 race car">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">Porsche Mobil 1 Supercup</span>
+              <h3 class="catalog-card-title">911 GT3 Cup (992)</h3>
+              <p class="catalog-card-desc">Synthetic-fuel-ready 503 bhp customer race car featuring double-wishbone front geometry and a digital motorsport cockpit.</p>
+            </div>
+            <a class="btn-ghost" href="porsche991gtcup.html">Open GT3 Cup Dossier</a>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/download.jpg" width="736" height="736" loading="lazy" alt="Porsche 935 Tribute Martini livery race car">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">77-Unit Collector Homage</span>
+              <h3 class="catalog-card-title">Porsche 935 Tribute (2019)</h3>
+              <p class="catalog-card-desc">Carbon-bodied homage to the 1978 Moby Dick built on the 911 GT2 RS 691 bhp twin-turbo platform.</p>
+            </div>
+            <a class="btn-ghost" href="tribute.html">Open 935 Tribute Dossier</a>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/Porsche 911 GT1-98.jpg" width="736" height="683" loading="lazy" alt="Porsche 911 GT1-98 on circuit">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">1998 Le Mans Overall Winner</span>
+              <h3 class="catalog-card-title">Porsche 911 GT1-98</h3>
+              <p class="catalog-card-desc">Carbon-fiber monocoque prototype that delivered a historic 1-2 overall victory at Le Mans on Porsche's 50th anniversary.</p>
+            </div>
+            <a class="btn-ghost" href="porschegt1.html">Open 911 GT1-98 Dossier</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+            <span class="brand-crest">
+              <img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true">
+            </span>
+            <span class="brand-text">
+              <span class="brand-wordmark">Porsche</span>
+              <span class="brand-sub">Experience</span>
+            </span>
+          </a>
+          <p class="footer-brand-note">
+            An editorial motorsport portfolio archive dedicated to Porsche road engineering, Le Mans endurance prototypes, and verified technical benchmarks.
+          </p>
+        </div>
+
+        <div class="footer-nav-group">
+          <div>
+            <h2 class="footer-nav-heading">Sections</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="index.html">Overview</a></li>
+              <li><a class="footer-nav-link" href="models.html">Street Models</a></li>
+              <li><a class="footer-nav-link" href="performance.html">Track Performance</a></li>
+              <li><a class="footer-nav-link" href="history.html">Motorsport History</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="footer-nav-heading">Featured Dossiers</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
+              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Non-commercial fan-made portfolio project. Not affiliated with or endorsed by Dr. Ing. h.c. F. Porsche AG.</p>
+        <p>Porsche Experience Archive 2026</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -2,493 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porsche 963 | Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porsche 963 LMDh | Race Car Dossier</title>
+  <meta name="description" content="Specifications, endurance victories, and engineering overview of the Porsche 963 LMDh hybrid prototype.">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --red: #d5001c;
-            --black-dark: #0a0a0a;
-            --black-card: #141414;
-            --gray-text: #a0a0a0;
-            --transition-speed: cubic-bezier(0.25, 1, 0.5, 1);
-        }
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
 
-        /* --- Global Styles --- */
-        body {
-            background-color: var(--black-dark);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* --- Navbar --- */
-        .navbar {
-            background: rgba(10, 10, 10, 0.85) !important;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 15px 0;
-            transition: all 0.3s var(--transition-speed);
-        }
-
-        .logo-img {
-            height: 40px;
-        }
-
-        .nav-link {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #ccc !important;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
-        /* --- Main Content Layout --- */
-        .detail-page-main {
-            padding-top: 120px;
-            padding-bottom: 60px;
-        }
-
-        .left-column img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-        }
-
-        /* --- Specifications Card --- */
-        .specs {
-            background: var(--black-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .specs h3 {
-            color: var(--red);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            margin-top: 20px;
-        }
-
-        .specs h3:first-child {
-            margin-top: 0;
-        }
-
-        .specs p {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 15px;
-            color: #fff;
-        }
-
-        .specs p:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        /* --- Right Column Typography --- */
-        .right-column h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .right-column h3 {
-            font-size: 1.1rem;
-            color: var(--red);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .right-column p {
-            color: #ccc;
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        blockquote {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #fff;
-            border-left: 4px solid var(--red);
-            padding-left: 20px;
-            margin: 40px 0;
-            background: linear-gradient(90deg, rgba(213, 0, 28, 0.1) 0%, transparent 100%);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* --- Gallery Section --- */
-        .gallery {
-            margin-top: 80px;
-        }
-
-        .gallery h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .gallery h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--red);
-            border-radius: 2px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            position: relative;
-            aspect-ratio: 16/9;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s var(--transition-speed);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* --- Scroll Animation --- */
-        .fade-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--transition-speed), transform 0.8s var(--transition-speed);
-        }
-
-        .fade-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 40px 20px;
-            background: #050505;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            color: #666;
-            letter-spacing: 1px;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .navbar-toggler {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 2px rgba(213, 0, 28, 0.5);
-            outline: none;
-        }
-
-        /* --- Mobile Responsive Rules --- */
-        @media (max-width: 991.98px) {
-            .navbar {
-                padding: 12px 0;
-            }
-
-            .navbar-collapse {
-                background: rgba(12, 12, 12, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                padding: 18px 20px;
-                margin-top: 12px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            }
-
-            .navbar-nav {
-                text-align: center;
-                gap: 5px;
-            }
-
-            .nav-link {
-                padding: 10px 0 !important;
-                font-size: 0.85rem !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            }
-
-            .nav-item:last-child .nav-link {
-                border-bottom: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .detail-page-main {
-                padding-top: 90px;
-                padding-bottom: 35px;
-            }
-
-            .left-column img {
-                margin-bottom: 20px;
-            }
-
-            .specs {
-                padding: 20px 18px;
-            }
-
-            .specs h3 {
-                font-size: 0.75rem;
-                letter-spacing: 1.5px;
-            }
-
-            .specs p {
-                font-size: 0.92rem;
-                padding-bottom: 12px;
-            }
-
-            .right-column h2 {
-                font-size: clamp(1.4rem, 6vw, 1.8rem);
-                letter-spacing: 1.5px;
-                line-height: 1.25;
-                margin-bottom: 12px;
-            }
-
-            .right-column h3 {
-                font-size: 0.95rem;
-                letter-spacing: 1px;
-                margin-bottom: 18px;
-            }
-
-            .right-column p {
-                font-size: 0.92rem;
-                line-height: 1.7;
-                margin-bottom: 20px;
-            }
-
-            blockquote {
-                font-size: 0.95rem;
-                margin: 25px 0;
-                padding: 15px 16px;
-                border-left-width: 3px;
-            }
-
-            .gallery {
-                margin-top: 45px;
-            }
-
-            .gallery h2 {
-                font-size: 1.5rem;
-                margin-bottom: 25px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            footer {
-                padding: 30px 15px;
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-img {
-                height: 32px;
-            }
-
-            .specs {
-                padding: 16px 14px;
-            }
-
-            .specs p {
-                font-size: 0.86rem;
-            }
-
-            .right-column h2 {
-                font-size: clamp(1.3rem, 7vw, 1.6rem);
-            }
-        }
-    </style>
+  <script src="js/core.js" defer></script>
+  <script src="js/subpages.js" defer></script>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="asset/pngimg.com - porsche_logo_PNG9.png" class="logo-img" alt="Porsche Logo">
-            </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="models.html">Models</a></li>
-                    <li class="nav-item"><a class="nav-link" href="performance.html">Performance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
-                </ul>
-            </div>
-        </div>
+  <header class="site-header is-solid">
+    <div class="container nav-bar">
+      <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+        <span class="brand-crest"><img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true"></span>
+        <span class="brand-text"><span class="brand-wordmark">Porsche</span><span class="brand-sub">Experience</span></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="models.html">Models</a></li>
+          <li><a class="nav-link" href="performance.html" aria-current="page">Performance</a></li>
+          <li><a class="nav-link" href="history.html">History</a></li>
+        </ul>
+      </nav>
+      <button type="button" id="nav-toggle" class="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <nav aria-label="Mobile primary navigation">
+      <ul class="mobile-drawer-list">
+        <li><a class="mobile-drawer-link" href="index.html"><span>Overview</span><span>01</span></a></li>
+        <li><a class="mobile-drawer-link" href="models.html"><span>Models</span><span>02</span></a></li>
+        <li><a class="mobile-drawer-link" href="performance.html" aria-current="page"><span>Performance</span><span>03</span></a></li>
+        <li><a class="mobile-drawer-link" href="history.html"><span>History</span><span>04</span></a></li>
+      </ul>
+    </nav>
+    <p class="mobile-drawer-note">Non-commercial fan-made portfolio archive built with verified Porsche engineering specifications.</p>
+  </div>
+
+  <main id="main-content" class="detail-main container" tabindex="-1">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Overview</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="performance.html">Track Performance</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Porsche 963</li>
+      </ol>
     </nav>
 
-    <main class="detail-page-main container">
-        <div class="row g-5">
-
-            <div class="col-lg-5 left-column fade-section">
-                <img src="asset/porsche963.png" alt="Side profile of the Porsche 963">
-
-                <div class="specs">
-                    <h3>MODEL</h3>
-                    <p>Porsche 963</p>
-
-                    <h3>SEASONS</h3>
-                    <p>2023 - Present</p>
-
-                    <h3>ENGINE</h3>
-                    <p>4.6 L Twin-Turbo V8 Hybrid</p>
-
-                    <h3>POWER</h3>
-                    <p>~670 bhp / 500 kW (Combined Max)</p>
-
-                    <h3>GEARBOX</h3>
-                    <p>7-Speed Xtrac Sequential</p>
-
-                    <h3>WEIGHT</h3>
-                    <p>~1,030 kg (Regulated Minimum)</p>
-
-                    <h3>CHASSIS</h3>
-                    <p>Multimatic Carbon-fiber Monocoque</p>
-                </div>
-            </div>
-
-            <div class="col-lg-7 right-column fade-section" style="transition-delay: 0.2s;">
-                <h2>Porsche 963</h2>
-                <h3>The Vanguard of Porsche's Modern Hybrid Prototype Era</h3>
-
-                <p><strong>Class:</strong> LMDh / GTP Hypercar Category</p>
-
-                <p>The Porsche 963 marks a triumphal return to top-flight international endurance prototype racing.
-                    Designed to compete simultaneously in the FIA World Endurance Championship (WEC) and the IMSA
-                    WeatherTech SportsCar Championship under the unifying LMDh regulations, the 963 is a cutting-edge
-                    hybrid weapon engineered in collaboration with chassis specialist Multimatic and operated by the
-                    legendary Porsche Penske Motorsport squad.</p>
-
-                <blockquote>"The Porsche 963 embodies our commitment to the future of motorsport, bridging
-                    high-efficiency hybrid electrification with the unyielding performance of Porsche's racing
-                    heritage."</blockquote>
-
-                <p>Beneath its muscular, wind-tunnel-refined bodywork beats a high-revving 4.6-liter twin-turbocharged
-                    V8 engine, structurally derived from the legendary 918 Spyder hybrid hypercar. This powerful
-                    internal combustion engine operates seamlessly alongside a standardized electric hybrid system,
-                    delivering instantaneous power and incredible efficiency to meet strict global constraints.</p>
-
-                <h2 class="mt-5">Race Results</h2>
-                <h3>Conquering Daytona and Dominating the Global Stage</h3>
-
-                <p>Entering service at the dawn of the hybrid prototype renaissance, the Porsche 963 quickly unlocked
-                    its true potential, asserting structural supremacy across both sides of the Atlantic.</p>
-
-                <p>Its breakthrough crowning achievement arrived at the prestigious Rolex 24 at Daytona, where the #7
-                    factory Porsche Penske Motorsport car claimed a monumental overall victory, marking Porsche’s first
-                    overall win at Daytona since 2003. Beyond its classic Florida triumph, the 963 prototype platform
-                    continues to accumulate dominant milestones, capturing multiple WEC and IMSA championship titles,
-                    pole positions, and outright race victories worldwide, cementing its position in a golden era of
-                    sports prototype racing.</p>
-            </div>
-
+    <div class="detail-grid">
+      <aside class="detail-aside reveal">
+        <div class="detail-profile-frame">
+          <img src="asset/porsche963.png" width="960" height="540" alt="Side three-quarter view of the Porsche 963 LMDh race car">
         </div>
 
-        <section class="gallery fade-section">
-            <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://www.motorsport-total.com/img/2026/260116/w620_h500_319015.jpg"
-                        alt="Porsche Racing DNA Heritage">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://cdn-image.as-web.jp/2025/11/15181444/BB_DT_11_14_25_01301.jpg"
-                        alt="Endurance Track Context Image">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://external-preview.redd.it/porsche-testing-joker-update-for-963-for-2025-v0-yzNE5lvZzwtF6tKpi4To_y-m9b3_SRQ3T8urm0EtCpA.jpg?auto=webp&s=ac66c47395b087f25d081cd348e3a1aa58fc2173"
-                        alt="Porsche 963 Action View">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://sportscar365.com/wp-content/uploads/2025/09/BB_RA_8_2_25_17570.jpg"
-                        alt="Porsche Performance Design Elements">
-                </div>
-            </div>
+        <section class="spec-sheet" aria-label="Technical specifications">
+          <h2 class="spec-sheet-title">Technical Specifications</h2>
+          <dl class="spec-list tabular-nums">
+            <div class="spec-row"><dt>Model</dt><dd>Porsche 963</dd></div>
+            <div class="spec-row"><dt>Seasons</dt><dd>2023 - Present</dd></div>
+            <div class="spec-row"><dt>Engine</dt><dd>4.6L Twin-Turbo V8 Hybrid</dd></div>
+            <div class="spec-row"><dt>Combined Power</dt><dd>~680 PS / 500 kW (BoP Regulated)</dd></div>
+            <div class="spec-row"><dt>Gearbox</dt><dd>7-Speed Xtrac Sequential</dd></div>
+            <div class="spec-row"><dt>Weight</dt><dd>~1,030 kg (Regulated Minimum)</dd></div>
+            <div class="spec-row"><dt>Chassis</dt><dd>Multimatic Carbon-Fiber Monocoque</dd></div>
+          </dl>
         </section>
-    </main>
+      </aside>
 
-    <footer>
-        <div class="container text-uppercase">
-            <p class="mb-0">&copy; 2026 Porsche. All rights reserved.</p>
+      <article class="detail-article reveal">
+        <h1>Porsche 963</h1>
+        <p class="detail-subtitle">The Vanguard of Porsche's Modern Hybrid Prototype Era</p>
+        <p class="detail-class"><strong>Class:</strong> LMDh / GTP Hypercar Category</p>
+
+        <p>
+          The Porsche 963 marks Porsche's return to top-tier international endurance prototype racing across both the FIA World Endurance Championship (WEC) and the IMSA WeatherTech SportsCar Championship. Developed alongside chassis partner Multimatic and operated by Porsche Penske Motorsport, the 963 targets overall endurance crowns worldwide.
+        </p>
+
+        <blockquote>
+          "The Porsche 963 bridges high-efficiency hybrid electrification with the enduring mechanical strength of Porsche's racing heritage."
+        </blockquote>
+
+        <p>
+          Under its wind-tunnel-sculpted engine cover sits a 4.6-liter twin-turbocharged V8 derived from the RS Spyder and 918 Spyder lineage. Paired with the standardized LMDh hybrid system, the powertrain hits over 330 km/h on long endurance straights while meeting strict Balance of Performance energy curves.
+        </p>
+
+        <h2>Race Results: Daytona &amp; World Titles</h2>
+        <p>
+          In the Rolex 24 at Daytona, the #7 factory Porsche Penske Motorsport entry delivered Porsche's first overall victory at Daytona since 2003. Across both WEC and IMSA seasons, the 963 has captured championship titles, pole positions, and endurance podiums across North America, Europe, and Asia.
+        </p>
+      </article>
+    </div>
+
+    <section class="gallery-section reveal" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="section-heading">Gallery</h2>
+      <div class="gallery-grid">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 963 studio view">
+          <img src="asset/porsche963.png" width="960" height="540" loading="lazy" alt="Porsche 963 Penske red white black livery">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 963 track testing">
+          <img src="https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_690x388/dam/pnr/2024/Motorsports/963-test/M24_0590_fine.jpg/jcr:content/M24_0590_fine.jpg" data-fallback="asset/porsche963.png" width="690" height="388" loading="lazy" alt="Porsche 963 endurance test session">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 963 IMSA action">
+          <img src="https://sportscar365.com/wp-content/uploads/2023/09/M23_6223_fine.jpg" data-fallback="asset/porsche963.png" width="1200" height="800" loading="lazy" alt="Porsche 963 cornering on circuit">
+        </button>
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 963 Road America action">
+          <img src="https://sportscar365.com/wp-content/uploads/2025/09/BB_RA_8_2_25_17570.jpg" data-fallback="asset/porsche963.png" width="1200" height="800" loading="lazy" alt="Porsche 963 at full speed on circuit">
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="gallery-lightbox" class="lightbox-dialog" aria-label="Image viewer">
+    <div class="lightbox-frame">
+      <div class="lightbox-bar">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <div class="timeline-step-btns">
+          <button type="button" id="lightbox-prev" class="btn-ghost">Previous</button>
+          <button type="button" id="lightbox-next" class="btn-ghost">Next</button>
+          <button type="button" id="lightbox-close" class="btn-primary">Close</button>
         </div>
-    </footer>
+      </div>
+      <img id="lightbox-img" class="lightbox-img" src="asset/porsche963.png" width="960" height="540" alt="Selected Porsche gallery photograph">
+    </div>
+  </dialog>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
-    </script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand-link" href="index.html" aria-label="Porsche Experience Home">
+            <span class="brand-crest"><img src="asset/pngimg.com - porsche_logo_PNG9.png" width="450" height="139" alt="" aria-hidden="true"></span>
+            <span class="brand-text"><span class="brand-wordmark">Porsche</span><span class="brand-sub">Experience</span></span>
+          </a>
+          <p class="footer-brand-note">An editorial motorsport portfolio archive dedicated to Porsche road engineering, Le Mans endurance prototypes, and verified technical benchmarks.</p>
+        </div>
+        <div class="footer-nav-group">
+          <div>
+            <h2 class="footer-nav-heading">Sections</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="index.html">Overview</a></li>
+              <li><a class="footer-nav-link" href="models.html">Street Models</a></li>
+              <li><a class="footer-nav-link" href="performance.html">Track Performance</a></li>
+              <li><a class="footer-nav-link" href="history.html">Motorsport History</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="footer-nav-heading">Featured Dossiers</h2>
+            <ul class="footer-nav-list">
+              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
+              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Non-commercial fan-made portfolio project. Not affiliated with or endorsed by Dr. Ing. h.c. F. Porsche AG.</p>
+        <p>Porsche Experience Archive 2026</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -1,0 +1,458 @@
+/* Skip link for keyboard navigation (R-32) */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 16px;
+  z-index: 2000;
+  background: var(--porsche-red);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  transition: top var(--dur-fast) ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Sticky adaptive header: transparent at top, glassmorphism on scroll (R-10 dose cap: 1/2) */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0) 100%);
+  transition: background-color var(--dur-mid) var(--ease-race),
+    border-color var(--dur-mid) var(--ease-race),
+    backdrop-filter var(--dur-mid) var(--ease-race);
+}
+
+.site-header.is-scrolled,
+.site-header.is-solid {
+  background: rgba(10, 10, 10, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--hairline);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Fixed Brand Lockup: cropped Porsche crest + high-contrast wordmark */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.brand-crest {
+  width: 28px;
+  height: 40px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-crest img {
+  height: 40px;
+  width: auto;
+  max-width: none;
+  transform: translateX(-2px);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* Desktop navigation links with precision hairline hover */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  height: 1.5px;
+  background-color: var(--porsche-red);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-fast) var(--ease-race);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--text-primary);
+}
+
+/* Mobile menu trigger (discoverable with label + animated hamburger lines) */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-btn);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+.menu-toggle:hover {
+  border-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 18px;
+  height: 18px;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform var(--dur-fast) var(--ease-race), opacity var(--dur-fast) ease;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* Mobile drawer (glassmorphism dose cap element 2/2, only active on mobile) */
+.mobile-drawer {
+  position: fixed;
+  inset-block-start: var(--nav-height);
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 990;
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--hairline);
+  padding: 28px var(--gutter) 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity var(--dur-fast) var(--ease-race),
+    transform var(--dur-fast) var(--ease-race),
+    visibility var(--dur-fast) ease;
+}
+
+.mobile-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-drawer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.mobile-drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color var(--dur-fast) ease, padding-left var(--dur-fast) ease;
+}
+
+.mobile-drawer-link:hover {
+  color: var(--porsche-red-text);
+  padding-left: 8px;
+}
+
+.mobile-drawer-link[aria-current="page"] {
+  color: var(--porsche-red-text);
+}
+
+.mobile-drawer-note {
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Buttons system */
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 26px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-btn);
+  transition: background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-race);
+}
+
+.btn-primary {
+  background-color: var(--porsche-red);
+  color: #ffffff;
+  border: 1px solid var(--porsche-red);
+}
+
+.btn-primary:hover {
+  background-color: var(--porsche-red-hover);
+  border-color: var(--porsche-red-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--control-border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.btn-ghost:active {
+  transform: scale(0.98);
+}
+
+/* Scroll reveal helper (R-19) */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur-slow) var(--ease-race),
+    transform var(--dur-slow) var(--ease-race);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Minimalist Editorial Footer (2-zone architectural layout, non-template) */
+.site-footer {
+  background: var(--bg-void);
+  border-top: 1px solid var(--hairline);
+  padding-block: clamp(40px, 6vw, 68px) clamp(28px, 4vw, 44px);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 36px 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--hairline);
+  align-items: start;
+}
+
+.footer-brand-note {
+  max-width: 46ch;
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.footer-nav-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer-nav-heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-fast) ease;
+}
+
+.footer-nav-link:hover {
+  color: var(--text-primary);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  padding-top: 24px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.footer-disclaimer {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 860px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 68px;
+  }
+
+  .brand-wordmark {
+    font-size: 0.9375rem;
+    letter-spacing: 0.18em;
+  }
+
+  .brand-sub {
+    font-size: 0.58rem;
+  }
+
+  .footer-nav-group {
+    grid-template-columns: 1fr;
+  }
+}
