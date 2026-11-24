@@ -12,29 +12,71 @@
     const videoToggle = document.getElementById('hero-video-toggle');
     const videoFrame = document.getElementById('hero-video-frame');
 
+    if (core.hasGsap && hero) {
+      const tl = window.gsap.timeline({ defaults: { ease: 'power4.out' } });
+      tl.fromTo('.hero-kicker', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+        .fromTo(
+          '.hero-title-word',
+          { yPercent: 112, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.9, stagger: 0.12 },
+          '-=0.3'
+        )
+        .fromTo('.hero-lead', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.45')
+        .fromTo('.hero-actions', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.48')
+        .fromTo('.hero-side', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.48');
+    }
+
     if (hero && heroMedia && !core.prefersReducedMotion) {
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const offset = Math.min(window.scrollY, hero.offsetHeight);
-          heroMedia.style.transform = `translate3d(0, ${(offset * 0.18).toFixed(1)}px, 0)`;
-          ticking = false;
+      if (core.hasScrollTrigger) {
+        window.gsap.to(heroMedia, {
+          yPercent: 15,
+          scale: 1.07,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.6
+          }
         });
-      }, { passive: true });
+      } else {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            const offset = Math.min(window.scrollY, hero.offsetHeight);
+            heroMedia.style.transform = `translate3d(0, ${(offset * 0.18).toFixed(1)}px, 0)`;
+            ticking = false;
+          });
+        }, { passive: true });
+      }
     }
 
     if (cta && !core.prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
-      cta.addEventListener('mousemove', (e) => {
-        const rect = cta.getBoundingClientRect();
-        const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.16;
-        const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
-        cta.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
-      });
-      cta.addEventListener('mouseleave', () => {
-        cta.style.transform = '';
-      });
+      if (core.hasGsap) {
+        const moveX = window.gsap.quickTo(cta, 'x', { duration: 0.35, ease: 'power3.out' });
+        const moveY = window.gsap.quickTo(cta, 'y', { duration: 0.35, ease: 'power3.out' });
+        cta.addEventListener('mousemove', (e) => {
+          const rect = cta.getBoundingClientRect();
+          moveX((e.clientX - (rect.left + rect.width / 2)) * 0.18);
+          moveY((e.clientY - (rect.top + rect.height / 2)) * 0.24);
+        });
+        cta.addEventListener('mouseleave', () => {
+          moveX(0);
+          moveY(0);
+        });
+      } else {
+        cta.addEventListener('mousemove', (e) => {
+          const rect = cta.getBoundingClientRect();
+          const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.16;
+          const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
+          cta.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+        });
+        cta.addEventListener('mouseleave', () => {
+          cta.style.transform = '';
+        });
+      }
     }
 
     if (videoToggle && videoFrame) {
@@ -125,12 +167,31 @@
         right.textContent = `${model.power} ${model.powerUnit}`;
 
         btn.append(left, right);
-        btn.addEventListener('click', () => selectModel(model.id));
+        btn.addEventListener('click', () => selectModel(model.id, true));
         selectorList.appendChild(btn);
       });
     }
 
-    function selectModel(modelId) {
+    function animateStageSwap(animate) {
+      if (!animate || core.prefersReducedMotion) return;
+      if (core.hasGsap) {
+        window.gsap.killTweensOf(stageImg);
+        window.gsap.fromTo(
+          stageImg,
+          { opacity: 0.18, scale: 1.075 },
+          { opacity: 1, scale: 1, duration: 0.68, ease: 'power3.out', clearProps: 'transform' }
+        );
+        window.gsap.fromTo(
+          [titleEl, summaryEl, drivetrainEl],
+          { opacity: 0.35, y: 8 },
+          { opacity: 1, y: 0, duration: 0.42, stagger: 0.04, ease: 'power2.out', clearProps: 'transform' }
+        );
+      } else {
+        stageImg.classList.remove('is-transitioning');
+      }
+    }
+
+    function selectModel(modelId, animate) {
       const models = data.showcaseModels[currentCategory] || [];
       const model = models.find((m) => m.id === modelId) || models[0];
       if (!model) {
@@ -148,19 +209,20 @@
       summaryEl.textContent = model.summary;
       drivetrainEl.textContent = model.drivetrain;
       dossierLink.setAttribute('href', model.href);
-      dossierLink.textContent = `Open ${model.name} Dossier`;
+      dossierLink.textContent = `Read About ${model.name}`;
 
       accelUnitEl.textContent = model.accelUnit;
       speedUnitEl.textContent = model.topSpeedUnit;
       powerUnitEl.textContent = model.powerUnit;
 
-      core.animateNumber(accelEl, model.accel, model.accelDecimals, 500);
-      core.animateNumber(speedEl, model.topSpeed, 0, 560);
-      core.animateNumber(powerEl, model.power, 0, 620);
+      core.animateNumber(accelEl, model.accel, model.accelDecimals, 540);
+      core.animateNumber(speedEl, model.topSpeed, 0, 620);
+      core.animateNumber(powerEl, model.power, 0, 680);
 
-      stageImg.classList.add('is-transitioning');
+      if (!core.hasGsap && animate) {
+        stageImg.classList.add('is-transitioning');
+      }
       clearTimeout(loadTimer);
-      setStageStatus('loading', `Loading ${model.name} visual...`);
 
       const loader = new Image();
       let settled = false;
@@ -170,9 +232,14 @@
         settled = true;
         clearTimeout(loadTimer);
         stageImg.src = src;
+        if (model.width && model.height) {
+          stageImg.width = model.width;
+          stageImg.height = model.height;
+        }
         stageImg.alt = model.alt;
         stageImg.classList.remove('is-transitioning');
         setStageStatus(null, '');
+        animateStageSwap(animate);
       }
 
       loader.onload = () => applyImage(model.image);
@@ -194,10 +261,10 @@
       };
 
       loadTimer = setTimeout(() => {
-        if (!settled && model.fallback) {
-          applyImage(model.fallback);
+        if (!settled) {
+          setStageStatus('loading', `Loading ${model.name} visual...`);
         }
-      }, 2400);
+      }, 280);
 
       loader.src = model.image;
     }
@@ -215,7 +282,7 @@
       const list = data.showcaseModels[cat];
       currentModelId = list[0].id;
       renderSelectorList(list);
-      selectModel(currentModelId);
+      selectModel(currentModelId, true);
     }
 
     tablist.querySelectorAll('[role="tab"]').forEach((tab) => {
@@ -229,7 +296,7 @@
     });
 
     renderSelectorList(data.showcaseModels.sport);
-    selectModel(currentModelId);
+    selectModel(currentModelId, false);
   }
 
   function initEngineeringPanel() {
@@ -255,6 +322,7 @@
       leadEl.textContent = sys.lead;
 
       barsEl.innerHTML = '';
+      const fills = [];
       sys.bars.forEach((bar) => {
         const item = document.createElement('div');
         item.className = 'aero-bar-item';
@@ -275,15 +343,30 @@
         fill.className = 'aero-fill';
         fill.style.setProperty('--bar-width', '0%');
         track.appendChild(fill);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            fill.style.setProperty('--bar-width', `${bar.percent}%`);
-          });
-        });
+        fills.push({ fill, percent: bar.percent });
 
         item.append(meta, track);
         barsEl.appendChild(item);
       });
+
+      if (core.hasGsap) {
+        fills.forEach(({ fill, percent }, idx) => {
+          window.gsap.to(fill, {
+            width: `${percent}%`,
+            duration: 0.72,
+            delay: idx * 0.08,
+            ease: 'power3.out'
+          });
+        });
+      } else {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            fills.forEach(({ fill, percent }) => {
+              fill.style.setProperty('--bar-width', `${percent}%`);
+            });
+          });
+        });
+      }
 
       tableBody.innerHTML = '';
       sys.specs.forEach((spec) => {
@@ -310,25 +393,37 @@
 
     const benchNums = document.querySelectorAll('.benchmark-num[data-count-target]');
     if (benchNums.length) {
-      if (core.prefersReducedMotion || !('IntersectionObserver' in window)) {
+      const triggerBenchmark = (el) => {
+        const target = Number(el.getAttribute('data-count-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        const span = document.createElement('span');
+        span.textContent = '0';
+        el.textContent = '';
+        el.appendChild(span);
+        if (suffix) el.appendChild(document.createTextNode(suffix));
+        core.animateNumber(span, target, 0, 860);
+      };
+
+      if (core.prefersReducedMotion || (!core.hasScrollTrigger && !('IntersectionObserver' in window))) {
         benchNums.forEach((el) => {
           const suffix = el.getAttribute('data-suffix') || '';
           el.textContent = `${Number(el.getAttribute('data-count-target')).toLocaleString('en-US')}${suffix}`;
+        });
+      } else if (core.hasScrollTrigger) {
+        benchNums.forEach((el) => {
+          window.ScrollTrigger.create({
+            trigger: el,
+            start: 'top 88%',
+            once: true,
+            onEnter: () => triggerBenchmark(el)
+          });
         });
       } else {
         const obs = new IntersectionObserver((entries, observer) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const target = Number(el.getAttribute('data-count-target'));
-            const suffix = el.getAttribute('data-suffix') || '';
-            const span = document.createElement('span');
-            span.textContent = '0';
-            el.textContent = '';
-            el.appendChild(span);
-            if (suffix) el.appendChild(document.createTextNode(suffix));
-            core.animateNumber(span, target, 0, 820);
-            observer.unobserve(el);
+            triggerBenchmark(entry.target);
+            observer.unobserve(entry.target);
           });
         }, { threshold: 0.45 });
 
@@ -344,6 +439,7 @@
     const titleEl = document.getElementById('era-title');
     const copyEl = document.getElementById('era-copy');
     const factEl = document.getElementById('era-fact');
+    const eraDossierLink = document.getElementById('era-dossier-link');
     const prevBtn = document.getElementById('era-prev');
     const nextBtn = document.getElementById('era-next');
 
@@ -369,19 +465,28 @@
       titleEl.textContent = era.title;
       copyEl.textContent = era.copy;
       factEl.textContent = era.fact;
+      if (eraDossierLink && era.href) {
+        eraDossierLink.setAttribute('href', era.href);
+        eraDossierLink.textContent = `Read About ${era.shortName}`;
+      }
 
-      imgEl.style.opacity = '0.25';
       const loader = new Image();
-      loader.onload = () => {
-        imgEl.src = era.image;
+      const applyEraImg = (src) => {
+        imgEl.src = src;
         imgEl.alt = era.alt;
-        imgEl.style.opacity = '1';
+        if (shouldScroll && core.hasGsap) {
+          window.gsap.fromTo(
+            imgEl,
+            { opacity: 0.25, scale: 1.06 },
+            { opacity: 1, scale: 1, duration: 0.62, ease: 'power3.out', clearProps: 'transform' }
+          );
+        } else {
+          imgEl.style.opacity = '1';
+        }
       };
-      loader.onerror = () => {
-        imgEl.src = era.fallback;
-        imgEl.alt = era.alt;
-        imgEl.style.opacity = '1';
-      };
+      if (!core.hasGsap && shouldScroll) imgEl.style.opacity = '0.25';
+      loader.onload = () => applyEraImg(era.image);
+      loader.onerror = () => applyEraImg(era.fallback);
       loader.src = era.image;
     }
 

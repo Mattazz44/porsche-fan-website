@@ -4,8 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Porsche Experience | Track Performance &amp; Race Cars</title>
-  <meta name="description" content="Porsche Motorsport track weapons from the 911 GT3 RS and 718 Cayman GT4 RS to the 963 LMDh, 99X Electric, 911 RSR, and 911 GT1-98.">
+  <title>Porsche Experience | Track Performance, Race Cars &amp; Compare</title>
+  <meta name="description" content="Porsche Motorsport track weapons from the 911 GT3 RS and 718 Cayman GT4 RS to the 963 LMDh, 99X Electric, 911 RSR-19, 919 Hybrid, and 911 GT1-98 with side-by-side comparison.">
+
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +19,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="js/data.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/subpages.js" defer></script>
 </head>
@@ -71,10 +78,15 @@
             <li aria-current="page">Track Performance</li>
           </ol>
         </nav>
-        <h1 class="page-hero-title">Track Weapons</h1>
-        <p class="page-hero-lead">
-          No compromises. Motorsport machines built around wind-tunnel downforce, endurance durability, and high-voltage energy recovery.
-        </p>
+        <div class="page-hero-layout">
+          <div>
+            <h1 class="page-hero-title">Track Weapons</h1>
+            <p class="page-hero-lead">
+              No compromises. Motorsport machines built around wind-tunnel downforce, endurance durability, and high-voltage energy recovery.
+            </p>
+          </div>
+          <button type="button" id="compare-open-btn" class="btn-ghost compare-open-btn">Compare (2)</button>
+        </div>
       </div>
     </header>
 
@@ -82,10 +94,10 @@
       <article id="gt3-rs" class="track-dossier-row reveal">
         <div class="track-dossier-media">
           <img
-            src="asset/porsche aesthetic.jpeg"
-            width="736"
-            height="864"
-            alt="Porsche 911 GT3 RS track profile with active rear wing"
+            src="asset/porsche-911-gt3-rs-992.jpg"
+            width="1920"
+            height="1068"
+            alt="Porsche 911 GT3 RS Type 992 on dark studio plinth with swan-neck DRS rear wing"
           >
         </div>
         <div class="track-dossier-body">
@@ -93,7 +105,7 @@
             <span class="catalog-card-tag">GT Racing / Active Aero</span>
             <h2 class="catalog-card-title">911 GT3 RS (992)</h2>
             <p class="catalog-card-desc">
-              A central nose-mounted radiator frees space for stepless front diffuser flaps working in balance with a hydraulically controlled DRS rear wing.
+              A central nose-mounted radiator frees space for stepless front diffuser flaps working in balance with a hydraulically controlled swan-neck DRS rear wing.
             </p>
           </div>
           <div class="catalog-card-specs tabular-nums">
@@ -101,8 +113,9 @@
             <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.2 s</span></div>
             <div><span class="mini-spec-label">Output</span><span class="mini-spec-value">525 PS</span></div>
           </div>
-          <div>
-            <a class="btn-primary" href="porsche991gtcup.html">Compare With 911 GT3 Cup</a>
+          <div class="card-actions-row">
+            <a class="btn-primary" href="porsche911gt3rs.html">Read About 911 GT3 RS</a>
+            <button type="button" class="btn-ghost" data-compare-pair="911-gt3-rs,911-gt3-cup">Compare With GT3 Cup</button>
           </div>
         </div>
       </article>
@@ -110,11 +123,11 @@
       <article id="963" class="track-dossier-row reveal">
         <div class="track-dossier-media">
           <img
-            src="asset/porsche963.png"
-            width="960"
-            height="540"
+            src="asset/porsche-963-lmdh.jpg"
+            width="1920"
+            height="1280"
             loading="lazy"
-            alt="Porsche 963 LMDh hybrid prototype in factory Penske livery"
+            alt="Number 6 Porsche Penske Motorsport 963 LMDh hybrid prototype racing at Le Mans"
           >
         </div>
         <div class="track-dossier-body">
@@ -130,8 +143,9 @@
             <div><span class="mini-spec-label">Min Weight</span><span class="mini-spec-value">1,030 kg</span></div>
             <div><span class="mini-spec-label">Gearbox</span><span class="mini-spec-value">7-Spd Xtrac</span></div>
           </div>
-          <div>
-            <a class="btn-primary" href="porsche963.html">Open Porsche 963 Dossier</a>
+          <div class="card-actions-row">
+            <a class="btn-primary" href="porsche963.html">Read About Porsche 963</a>
+            <button type="button" class="btn-ghost" data-compare-pair="porsche-963,porsche-919-hybrid">Compare With 919 Hybrid</button>
           </div>
         </div>
       </article>
@@ -139,11 +153,11 @@
       <article id="gt4-rs" class="track-dossier-row reveal">
         <div class="track-dossier-media">
           <img
-            src="asset/Porsche 718 Spyder RS.jpeg"
-            width="736"
-            height="981"
+            src="asset/porsche-718-cayman-gt4-rs.jpg"
+            width="1920"
+            height="1067"
             loading="lazy"
-            alt="Porsche 718 RS mid-engine track chassis with carbon hood"
+            alt="Porsche 718 Cayman GT4 RS Type 982 Weissach Package coupe"
           >
         </div>
         <div class="track-dossier-body">
@@ -159,8 +173,9 @@
             <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">315 km/h</span></div>
             <div><span class="mini-spec-label">Output</span><span class="mini-spec-value">500 PS</span></div>
           </div>
-          <div>
-            <a class="btn-primary" href="porsche718.html">Compare With 718 Spyder RS</a>
+          <div class="card-actions-row">
+            <a class="btn-primary" href="porsche718gt4rs.html">Read About 718 GT4 RS</a>
+            <button type="button" class="btn-ghost" data-compare-pair="718-gt4-rs,718-spyder-rs">Compare With Spyder RS</button>
           </div>
         </div>
       </article>
@@ -168,11 +183,11 @@
       <article id="99x-electric" class="track-dossier-row reveal">
         <div class="track-dossier-media">
           <img
-            src="asset/Porsche Taycan !!.jpeg"
-            width="736"
-            height="981"
+            src="asset/porsche-99x-electric.jpg"
+            width="1920"
+            height="1280"
             loading="lazy"
-            alt="Porsche high-voltage electric performance vehicle in motion"
+            alt="TAG Heuer Porsche 99X Electric Gen3 Formula E single-seater on circuit"
           >
         </div>
         <div class="track-dossier-body">
@@ -185,11 +200,12 @@
           </div>
           <div class="catalog-card-specs tabular-nums">
             <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">~2.0 s</span></div>
-            <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">320+ km/h</span></div>
+            <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">322 km/h</span></div>
             <div><span class="mini-spec-label">Peak Regen</span><span class="mini-spec-value">600 kW</span></div>
           </div>
-          <div>
-            <a class="btn-primary" href="porschetaycan.html">Inspect 800V Road Transfer</a>
+          <div class="card-actions-row">
+            <a class="btn-primary" href="porsche99xelectric.html">Read About 99X Electric</a>
+            <button type="button" class="btn-ghost" data-compare-pair="99x-electric,taycan-turbo-s">Compare With Taycan</button>
           </div>
         </div>
       </article>
@@ -201,49 +217,58 @@
       <div class="catalog-list">
         <article class="catalog-card reveal">
           <div class="catalog-card-media">
-            <img src="asset/rexy.jpg" width="736" height="1104" loading="lazy" alt="Porsche 911 RSR race car under floodlights">
+            <img src="asset/porsche-911-rsr-19.jpg" width="1920" height="1280" loading="lazy" alt="Factory number 92 Porsche 911 RSR-19 racing at Le Mans 2022">
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">LM GTE / GTLM</span>
-              <h3 class="catalog-card-title">Porsche 911 RSR</h3>
-              <p class="catalog-card-desc">Mid-rear 4.2-liter naturally aspirated flat-six engineered for large underbody rear diffuser packaging and Le Mans class wins.</p>
+              <span class="catalog-card-tag">LM GTE / GTLM (2019 - 2023)</span>
+              <h3 class="catalog-card-title">Porsche 911 RSR-19</h3>
+              <p class="catalog-card-desc">Mid-rear 4.2-liter naturally aspirated flat-six (~515 hp / 489 Nm) engineered for underbody diffuser packaging and Le Mans GTE-Pro wins.</p>
             </div>
-            <a class="btn-ghost" href="porsche911rsr.html">Open 911 RSR Dossier</a>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche911rsr.html">Read About 911 RSR-19</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-rsr-19" aria-pressed="false">+ Compare</button>
+            </div>
           </div>
         </article>
 
         <article class="catalog-card reveal">
           <div class="catalog-card-media">
-            <img src="asset/gt3 cup.jpg" width="736" height="736" loading="lazy" alt="Porsche 911 GT3 Cup 992 race car">
+            <img src="asset/porsche-911-gt3-cup-992-2.jpg" width="1920" height="1080" loading="lazy" alt="Porsche 911 GT3 Cup Type 992 racing at Spa-Francorchamps">
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Porsche Mobil 1 Supercup</span>
+              <span class="catalog-card-tag">Porsche Mobil 1 Supercup (2021 - 2025)</span>
               <h3 class="catalog-card-title">911 GT3 Cup (992)</h3>
-              <p class="catalog-card-desc">Synthetic-fuel-ready 503 bhp customer race car featuring double-wishbone front geometry and a digital motorsport cockpit.</p>
+              <p class="catalog-card-desc">Synthetic-fuel-ready 510 PS (470 Nm) customer race car featuring double-wishbone front geometry and 1,260 kg dry mass.</p>
             </div>
-            <a class="btn-ghost" href="porsche991gtcup.html">Open GT3 Cup Dossier</a>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche991gtcup.html">Read About 911 GT3 Cup</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-gt3-cup" aria-pressed="false">+ Compare</button>
+            </div>
           </div>
         </article>
 
         <article class="catalog-card reveal">
           <div class="catalog-card-media">
-            <img src="asset/download.jpg" width="736" height="736" loading="lazy" alt="Porsche 935 Tribute Martini livery race car">
+            <img src="asset/porsche-935-2019-2.jpg" width="1920" height="972" loading="lazy" alt="Exposed carbon-fiber 2019 Porsche 935 Tribute limited edition">
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">77-Unit Collector Homage</span>
+              <span class="catalog-card-tag">77-Unit Collector Homage (2019)</span>
               <h3 class="catalog-card-title">Porsche 935 Tribute (2019)</h3>
-              <p class="catalog-card-desc">Carbon-bodied homage to the 1978 Moby Dick built on the 911 GT2 RS 691 bhp twin-turbo platform.</p>
+              <p class="catalog-card-desc">Carbon-bodied homage to the 1978 Moby Dick built on the 911 GT2 RS 700 PS (750 Nm) twin-turbo platform.</p>
             </div>
-            <a class="btn-ghost" href="tribute.html">Open 935 Tribute Dossier</a>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="tribute.html">Read About 935 Tribute</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="porsche-935-2019" aria-pressed="false">+ Compare</button>
+            </div>
           </div>
         </article>
 
         <article class="catalog-card reveal">
           <div class="catalog-card-media">
-            <img src="asset/Porsche 911 GT1-98.jpg" width="736" height="683" loading="lazy" alt="Porsche 911 GT1-98 on circuit">
+            <img src="asset/porsche-911-gt1-98.jpg" width="1920" height="1221" loading="lazy" alt="Number 26 Porsche 911 GT1-98 racing at Le Mans 1998">
           </div>
           <div class="catalog-card-body">
             <div>
@@ -251,12 +276,108 @@
               <h3 class="catalog-card-title">Porsche 911 GT1-98</h3>
               <p class="catalog-card-desc">Carbon-fiber monocoque prototype that delivered a historic 1-2 overall victory at Le Mans on Porsche's 50th anniversary.</p>
             </div>
-            <a class="btn-ghost" href="porschegt1.html">Open 911 GT1-98 Dossier</a>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porschegt1.html">Read About 911 GT1-98</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-gt1-98" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/porsche-919-hybrid-2.jpg" width="1920" height="1277" loading="lazy" alt="Number 2 Porsche 919 Hybrid racing at the 2017 24 Hours of Le Mans">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">FIA WEC LMP1-H (2015 - 2018)</span>
+              <h3 class="catalog-card-title">Porsche 919 Hybrid &amp; Evo</h3>
+              <p class="catalog-card-desc">Three consecutive Le Mans overall victories and Timo Bernhard's 5:19.546 outright Nurburgring Nordschleife record at 1,160+ hp.</p>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche919.html">Read About 919 Hybrid</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="porsche-919-hybrid" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal">
+          <div class="catalog-card-media">
+            <img src="asset/porsche-956-group-c-2.jpg" width="1920" height="1215" loading="lazy" alt="Rothmans Porsche 956 Group C ground-effect prototype speeding on track">
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">FIA Group C Icon (1982 - 1986)</span>
+              <h3 class="catalog-card-title">Porsche 956 Group C</h3>
+              <p class="catalog-card-desc">Aluminum monocoque ground-effect legend behind four consecutive Le Mans wins and Stefan Bellof's 6:11.13 Nordschleife benchmark.</p>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche956.html">Read About 956 Group C</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="porsche-956" aria-pressed="false">+ Compare</button>
+            </div>
           </div>
         </article>
       </div>
     </section>
+
+    <section id="compare-workbench" class="compare-workbench" data-default-compare="911-gt3-rs,911-gt3-cup" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="compare-header">
+          <div>
+            <p class="section-kicker">Motorsport Telemetry Matrix</p>
+            <h2 id="compare-heading" class="section-heading">Compare Race &amp; Road Hardware</h2>
+            <p id="compare-status-text" class="compare-status-text" aria-live="polite">Comparing 911 GT3 RS (992) vs 911 GT3 Cup (992)</p>
+          </div>
+          <div class="compare-header-actions">
+            <button type="button" id="compare-swap-btn" class="btn-ghost">Swap Slots</button>
+            <button type="button" id="compare-clear-btn" class="btn-ghost">Clear All</button>
+          </div>
+        </div>
+
+        <div class="compare-presets" role="group" aria-label="Quick track comparison presets">
+          <button type="button" class="filter-pill" data-compare-pair="911-gt3-rs,911-gt3-cup">911 GT3 RS vs GT3 Cup</button>
+          <button type="button" class="filter-pill" data-compare-pair="porsche-963,porsche-919-hybrid">963 LMDh vs 919 Hybrid</button>
+          <button type="button" class="filter-pill" data-compare-pair="718-gt4-rs,718-spyder-rs">718 GT4 RS vs Spyder RS</button>
+          <button type="button" class="filter-pill" data-compare-pair="99x-electric,taycan-turbo-s">99X Electric vs Taycan</button>
+        </div>
+
+        <div class="compare-controls-grid">
+          <div class="compare-slot">
+            <label for="compare-slot-1" class="compare-slot-label">Model 01</label>
+            <select id="compare-slot-1" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-slot-2" class="compare-slot-label">Model 02</label>
+            <select id="compare-slot-2" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-slot-3" class="compare-slot-label">Model 03 (Optional)</label>
+            <select id="compare-slot-3" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-quick-filter" class="compare-slot-label">Quick Add by Name</label>
+            <input id="compare-quick-filter" type="search" class="catalog-search-input compare-quick-input" placeholder="Type e.g. 963, RSR, 917K, 956">
+          </div>
+        </div>
+
+        <div id="compare-quick-chips" class="compare-quick-chips" hidden aria-live="polite"></div>
+
+        <div id="compare-table-wrap" class="compare-table-wrap" aria-live="polite"></div>
+      </div>
+    </section>
   </main>
+
+  <aside id="compare-tray" class="compare-tray" aria-label="Selected models for comparison" hidden>
+    <div class="container compare-tray-inner">
+      <div class="compare-tray-meta">
+        <span id="compare-tray-count" class="compare-tray-count tabular-nums">2 of 3 models selected</span>
+        <div id="compare-tray-list" class="compare-tray-list"></div>
+      </div>
+      <div class="compare-tray-actions">
+        <button type="button" id="compare-tray-jump" class="btn-primary">View Comparison</button>
+        <button type="button" id="compare-tray-clear" class="btn-ghost">Clear</button>
+      </div>
+    </div>
+  </aside>
 
   <footer class="site-footer">
     <div class="container">
@@ -289,10 +410,10 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
-              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
-              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche911gt3rs.html">911 GT3 RS (992)</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
+              <li><a class="footer-nav-link" href="porsche919.html">Porsche 919 Hybrid</a></li>
+              <li><a class="footer-nav-link" href="porsche99xelectric.html">Porsche 99X Electric</a></li>
             </ul>
           </div>
         </div>

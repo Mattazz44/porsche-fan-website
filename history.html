@@ -7,6 +7,10 @@
   <title>Porsche Experience | Motorsport History Timeline</title>
   <meta name="description" content="Alternating vertical scroll timeline tracing Porsche motorsport heritage from 1948 Gmund 356 and 1970 Le Mans 917K to 956 Group C, Paris-Dakar, GT1-98, 919 Hybrid, and 963 LMDh.">
 
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +19,8 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/subpages.js" defer></script>
 </head>
@@ -107,14 +113,17 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/porschecentre.png" width="1120" height="840" alt="Classic silver Porsche roadster parked before modern showroom">
+                <img src="asset/porsche-356-no1-1948-2.jpg" width="1920" height="1280" alt="Original 1948 silver Porsche 356 Number 1 Roadster in Porsche Museum">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">1948 | Gmund Origins</span>
                 <h2 class="timeline-card-title">The 356 "No. 1" Roadster</h2>
                 <p class="timeline-card-copy">
-                  On June 8, 1948, the Porsche 356 "No. 1" Roadster received general operating approval in Carinthia. Weighing just 585 kg with a mid-mounted 1,131 cc air-cooled flat-four, it established Porsche's enduring focus on power-to-weight efficiency over sheer displacement.
+                  On June 8, 1948, the Porsche 356 "No. 1" Roadster received general operating approval in Carinthia. Weighing just 585 kg with a mid-mounted 1,131 cc air-cooled flat-four producing 35 hp, it established Porsche's enduring focus on power-to-weight efficiency over sheer displacement.
                 </p>
+                <div style="margin-top: 18px;">
+                  <a class="btn-ghost" href="porsche356.html">Read About 356 No. 1</a>
+                </div>
               </div>
             </div>
           </article>
@@ -129,14 +138,17 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/on the LeMans tarmac.jpg" width="736" height="552" loading="lazy" alt="Porsche endurance prototype racing on tarmac at Le Mans">
+                <img src="asset/porsche-917k-1970.jpg" width="1920" height="1304" loading="lazy" alt="Number 22 Martini Racing Porsche 917K Le Mans winning prototype">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">1970 - 1971 | Flat-12 Legend</span>
                 <h2 class="timeline-card-title">The 917K &amp; First Overall Le Mans Throne</h2>
                 <p class="timeline-card-copy">
-                  Powered by a deafening air-cooled Flat-12 and stabilized by its short-tail Kurzheck aerodynamics, the Porsche 917K secured Porsche's first outright victory at the 24 Hours of Le Mans in 1970 before repeating in 1971 with a distance record that stood for decades.
+                  Powered by an air-cooled Flat-12 producing up to 600 hp and stabilized by its short-tail Kurzheck aerodynamics, the 800 kg Porsche 917K secured Porsche's first outright victory at the 24 Hours of Le Mans in 1970 before repeating in 1971 with a distance record that stood for decades.
                 </p>
+                <div style="margin-top: 18px;">
+                  <a class="btn-ghost" href="porsche917k.html">Read About Porsche 917K</a>
+                </div>
               </div>
             </div>
           </article>
@@ -151,14 +163,17 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/lemanswin.jpg" width="768" height="432" loading="lazy" alt="Porsche endurance team celebrating victory at Le Mans">
+                <img src="asset/porsche-956-group-c-2.jpg" width="1920" height="1215" loading="lazy" alt="Rothmans Porsche 956 Group C prototype speeding along the circuit">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">1982 - 1987 | Ground-Effect Era</span>
                 <h2 class="timeline-card-title">The Golden Era of Group C</h2>
                 <p class="timeline-card-copy">
-                  The Porsche 956 and its 962 successor introduced aluminum monocoque construction and ground-effect venturi tunnels to endurance racing. On May 28, 1983, Stefan Bellof lapped the 20.835 km Nurburgring Nordschleife in 6:11.13, a benchmark unbroken for 35 years.
+                  The 620 hp Porsche 956 and its 962 successor introduced aluminum monocoque construction and ground-effect venturi tunnels to endurance racing. On May 28, 1983, Stefan Bellof lapped the 20.835 km Nurburgring Nordschleife in 6:11.13, a benchmark unbroken for 35 years.
                 </p>
+                <div style="margin-top: 18px;">
+                  <a class="btn-ghost" href="porsche956.html">Read About 956 Group C</a>
+                </div>
               </div>
             </div>
           </article>
@@ -173,14 +188,17 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/911.jpg" width="735" height="1104" loading="lazy" alt="Porsche Paris-Dakar heritage 953 livery kicking up desert sand">
+                <img src="asset/porsche-959-1986.jpg" width="1920" height="1011" loading="lazy" alt="Silver 1988 Porsche 959 twin-turbocharged all-wheel-drive supercar in Porsche Museum">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">1984 - 1986 | Desert Rally</span>
                 <h2 class="timeline-card-title">Conquering the Paris-Dakar Desert</h2>
                 <p class="timeline-card-copy">
-                  Through the 953 and the twin-turbo 959, Porsche validated electronically controlled all-wheel drive across thousands of kilometers of African desert dunes. That rally architecture evolved directly into the traction systems used across modern 911 Carrera 4 and Turbo models.
+                  Through the 953 and the 450 PS twin-turbo 959, Porsche validated electronically controlled all-wheel drive across thousands of kilometers of African desert dunes. That rally architecture evolved directly into the traction systems used across modern 911 Carrera 4 and Turbo models.
                 </p>
+                <div style="margin-top: 18px;">
+                  <a class="btn-ghost" href="porsche959.html">Read About Porsche 959</a>
+                </div>
               </div>
             </div>
           </article>
@@ -195,16 +213,16 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/Porsche 911 GT1-98.jpg" width="736" height="683" loading="lazy" alt="Porsche 911 GT1-98 prototype on circuit">
+                <img src="asset/porsche-911-gt1-98.jpg" width="1920" height="1221" loading="lazy" alt="Winning number 26 Porsche 911 GT1-98 prototype racing at Le Mans 1998">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">1998 | Carbon Monocoque</span>
                 <h2 class="timeline-card-title">911 GT1-98 &amp; The 50th Anniversary Sweep</h2>
                 <p class="timeline-card-copy">
-                  Porsche Motorsport's first full carbon-fiber monocoque prototype mated extreme low-drag bodywork to a water-cooled 3.2-liter twin-turbo flat-six, claiming a decisive 1-2 overall victory at the 1998 24 Hours of Le Mans.
+                  Porsche Motorsport's first full carbon-fiber monocoque prototype mated extreme low-drag bodywork to a water-cooled 3.2-liter twin-turbo flat-six producing 550 hp, claiming a decisive 1-2 overall victory at the 1998 24 Hours of Le Mans.
                 </p>
                 <div style="margin-top: 18px;">
-                  <a class="btn-ghost" href="porschegt1.html">Open 911 GT1-98 Dossier</a>
+                  <a class="btn-ghost" href="porschegt1.html">Read About 911 GT1-98</a>
                 </div>
               </div>
             </div>
@@ -220,14 +238,17 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/lemanswin.jpg" width="768" height="432" loading="lazy" alt="Porsche 919 Hybrid drivers celebrating Le Mans victory">
+                <img src="asset/porsche-919-hybrid-2.jpg" width="1920" height="1277" loading="lazy" alt="2017 Le Mans winning number 2 Porsche 919 Hybrid racing on circuit">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">2015 - 2018 | Hybrid Hat-Trick</span>
                 <h2 class="timeline-card-title">919 Hybrid &amp; The 5:19.546 Record</h2>
                 <p class="timeline-card-copy">
-                  Winning Le Mans outright three consecutive years from 2015 through 2017, the 919 Hybrid platform pushed Porsche to 19 overall victories. Unrestricted as the 1,160+ hp 919 Hybrid Evo in 2018, Timo Bernhard set an outright 5:19.546 Nordschleife record.
+                  Winning Le Mans outright three consecutive years from 2015 through 2017 with ~900 hp combined hybrid output, the 919 Hybrid platform pushed Porsche to 19 overall victories. Unrestricted as the 1,160+ hp 919 Hybrid Evo in 2018, Timo Bernhard set an outright 5:19.546 Nordschleife record.
                 </p>
+                <div style="margin-top: 18px;">
+                  <a class="btn-ghost" href="porsche919.html">Read About 919 Hybrid</a>
+                </div>
               </div>
             </div>
           </article>
@@ -242,7 +263,7 @@
             </div>
             <div class="timeline-card">
               <div class="timeline-card-media">
-                <img src="asset/porsche963.png" width="960" height="540" loading="lazy" alt="Porsche 963 LMDh modern motorsport prototype">
+                <img src="asset/porsche-963-lmdh.jpg" width="1920" height="1280" loading="lazy" alt="Number 6 Porsche Penske Motorsport 963 LMDh hybrid prototype racing at Le Mans">
               </div>
               <div class="timeline-card-body">
                 <span class="timeline-card-year-inline tabular-nums">2023 - 2026 | Modern Hypercar</span>
@@ -251,7 +272,7 @@
                   Uniting twin-turbo V8 combustion with standardized LMDh hybrid boost, Porsche Penske Motorsport campaigned the 963 across WEC and IMSA, conquering the Rolex 24 at Daytona and capturing world endurance titles.
                 </p>
                 <div style="margin-top: 18px;">
-                  <a class="btn-primary" href="porsche963.html">Inspect Porsche 963 Dossier</a>
+                  <a class="btn-primary" href="porsche963.html">Read About Porsche 963</a>
                 </div>
               </div>
             </div>
@@ -292,7 +313,7 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche911turbos.html">911 Turbo S (992)</a></li>
               <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
               <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>

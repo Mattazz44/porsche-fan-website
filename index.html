@@ -7,6 +7,10 @@
   <title>Porsche Experience | Luxury Motorsport &amp; Engineering Archive</title>
   <meta name="description" content="Editorial non-commercial Porsche fan-page showcasing road and track icons, interactive telemetry specifications, and motorsport history from 1948 to 2026.">
 
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +19,8 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/home.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/home.js" defer></script>
@@ -144,13 +150,13 @@
 
           <article class="showcase-stage" aria-live="polite">
             <div class="stage-visual">
-              <img id="stage-image" class="stage-image" src="asset/porsche aesthetic.jpeg" width="736" height="864" alt="Selected Porsche model photograph">
+              <img id="stage-image" class="stage-image" src="asset/porsche-911-gt3-rs-992.jpg" width="1920" height="1068" alt="Porsche 911 GT3 RS Type 992 displayed on dark studio plinth with swan-neck DRS rear wing">
               <div id="stage-status" class="stage-status" hidden role="status"></div>
             </div>
             <div class="stage-body">
               <div class="stage-meta-top">
                 <h3 id="stage-title" class="stage-model-title">911 GT3 RS</h3>
-                <span id="stage-year" class="stage-model-year tabular-nums">2023 - 2026</span>
+                <span id="stage-year" class="stage-model-year tabular-nums">2022 - Present</span>
               </div>
               <p id="stage-summary" class="stage-summary"></p>
 
@@ -177,7 +183,7 @@
 
               <div class="stage-actions">
                 <p id="stage-drivetrain" class="stage-drivetrain"></p>
-                <a id="stage-dossier-link" class="btn-primary" href="performance.html#gt3-rs">Open 911 GT3 RS Dossier</a>
+                <a id="stage-dossier-link" class="btn-primary" href="porsche911gt3rs.html">Read About 911 GT3 RS</a>
               </div>
             </div>
           </article>
@@ -261,7 +267,7 @@
 
         <article class="timeline-viewer reveal" aria-live="polite">
           <div class="timeline-media">
-            <img id="era-image" src="asset/porschecentre.png" width="1120" height="840" loading="lazy" alt="Porsche archival era vehicle">
+            <img id="era-image" src="asset/porsche-356-no1-1948-2.jpg" width="1920" height="1280" loading="lazy" alt="Original 1948 silver Porsche 356 Number 1 Roadster inside the Porsche Museum">
           </div>
           <div>
             <div id="era-year" class="timeline-era-year tabular-nums">1948</div>
@@ -273,7 +279,7 @@
                 <button type="button" id="era-prev" class="btn-ghost">Previous Era</button>
                 <button type="button" id="era-next" class="btn-ghost">Next Era</button>
               </div>
-              <a class="btn-primary" href="history.html">Read Full History</a>
+              <a id="era-dossier-link" class="btn-primary" href="porsche356.html">Read About 356 No. 1 Roadster</a>
             </div>
           </div>
         </article>
@@ -312,7 +318,7 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche911turbos.html">911 Turbo S (992)</a></li>
               <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
               <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>

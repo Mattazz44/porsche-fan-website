@@ -7,6 +7,10 @@
   <title>Porsche Taycan Turbo S | Vehicle Dossier</title>
   <meta name="description" content="800-volt charging architecture, 952 PS Launch Control output, and 2.4-second sprint specs for the Porsche Taycan Turbo S.">
 
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +19,8 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/subpages.js" defer></script>
 </head>
@@ -69,23 +75,23 @@
       <aside class="detail-aside reveal">
         <div class="detail-profile-frame is-photo">
           <img
-            src="asset/Porsche Taycan !!.jpeg"
-            width="736"
-            height="981"
-            alt="Porsche Taycan Turbo S on coastal mountain pass"
+            src="asset/porsche-taycan-turbo-s-2.jpg"
+            width="1920"
+            height="1080"
+            alt="2024 Porsche Taycan Turbo S J1 II on dark Porsche stage"
           >
         </div>
 
         <section class="spec-sheet" aria-label="Technical specifications">
           <h2 class="spec-sheet-title">Technical Specifications</h2>
           <dl class="spec-list tabular-nums">
-            <div class="spec-row"><dt>Model</dt><dd>Taycan Turbo S (Gen 2 Update)</dd></div>
-            <div class="spec-row"><dt>Propulsion</dt><dd>Dual Electric Motors (AWD)</dd></div>
-            <div class="spec-row"><dt>Max Power</dt><dd>952 PS / 938 bhp (700 kW Overboost)</dd></div>
-            <div class="spec-row"><dt>Torque</dt><dd>1,110 Nm (818 lb-ft) Peak</dd></div>
+            <div class="spec-row"><dt>Model</dt><dd>Taycan Turbo S (J1 II, 2024 - Present)</dd></div>
+            <div class="spec-row"><dt>Propulsion</dt><dd>Dual Permanent-Magnet Motors (AWD)</dd></div>
+            <div class="spec-row"><dt>Max Power</dt><dd>952 PS / 938 hp (700 kW Overboost)</dd></div>
+            <div class="spec-row"><dt>Torque</dt><dd>1,110 Nm (818 lb-ft) Launch Control</dd></div>
             <div class="spec-row"><dt>0-100 km/h</dt><dd>2.4 seconds</dd></div>
             <div class="spec-row"><dt>Top Speed</dt><dd>260 km/h (162 mph)</dd></div>
-            <div class="spec-row"><dt>Architecture</dt><dd>800-Volt / 320 kW Max DC Charging</dd></div>
+            <div class="spec-row"><dt>Battery &amp; Charge</dt><dd>105 kWh Gross / 800V / 320 kW Max DC</dd></div>
           </dl>
         </section>
       </aside>
@@ -111,23 +117,28 @@
         <p>
           Under optimal DC fast-charging conditions up to 320 kW, the battery replenishes from 10 to 80 percent state of charge in approximately 18 minutes. Porsche Ceramic Composite Brakes (PCCB), rear-axle steering, and adaptive air suspension preserve Porsche steering precision across every mile.
         </p>
+
+        <div class="detail-actions">
+          <a class="btn-primary" href="models.html?compare=taycan-turbo-s,panamera-turbo-ehybrid#compare-workbench">Compare With Panamera</a>
+          <a class="btn-ghost" href="performance.html?compare=taycan-turbo-s,99x-electric#compare-workbench">Compare With 99X Electric</a>
+        </div>
       </article>
     </div>
 
     <section class="gallery-section reveal" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" class="section-heading">Gallery</h2>
       <div class="gallery-grid">
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan on winding mountain pass">
-          <img src="asset/Porsche Taycan !!.jpeg" width="736" height="981" loading="lazy" alt="Silver Porsche Taycan carving a winding coastal road">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge 2024 Porsche Taycan Turbo S J1 II stage view">
+          <img src="asset/porsche-taycan-turbo-s-2.jpg" width="1920" height="1080" loading="lazy" alt="2024 Porsche Taycan Turbo S J1 II on dark Porsche studio floor">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan action view">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2024/09/2025-Porsche-Taycan-Turbo-GT-4-1536x864.jpg" data-fallback="asset/Porsche Taycan !!.jpeg" width="1536" height="864" loading="lazy" alt="Porsche Taycan Turbo electric performance coupe">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan Turbo S exhibition view">
+          <img src="asset/porsche-taycan-turbo-s.jpg" width="1920" height="1239" loading="lazy" alt="White Porsche Taycan Turbo S front profile on dark exhibition stage">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan track detail">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2024/09/2025-Porsche-Taycan-Turbo-GT-8-1536x864.jpg" data-fallback="asset/Porsche Taycan !!.jpeg" width="1536" height="864" loading="lazy" alt="Porsche Taycan dynamic cornering view">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan Turbo S Safety Car at Spa">
+          <img src="asset/porsche-taycan-turbo-s-3.jpg" width="1920" height="1080" loading="lazy" alt="Manthey-Racing Porsche Taycan Turbo S Safety Car at Spa-Francorchamps">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan rear design">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2024/09/2025-Porsche-Taycan-Turbo-GT-7-1536x864.jpg" data-fallback="asset/Porsche Taycan !!.jpeg" width="1536" height="864" loading="lazy" alt="Porsche Taycan rear light signature">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche Taycan Turbo S rear lightbar studio view">
+          <img src="asset/porsche-taycan-turbo-s-4.jpg" width="1920" height="1282" loading="lazy" alt="Ice Grey Porsche Taycan Turbo S rear three-quarter lightbar on exhibition turntable">
         </button>
       </div>
     </section>
@@ -143,7 +154,7 @@
           <button type="button" id="lightbox-close" class="btn-primary">Close</button>
         </div>
       </div>
-      <img id="lightbox-img" class="lightbox-img" src="asset/Porsche Taycan !!.jpeg" width="1200" height="675" alt="Selected Porsche gallery photograph">
+      <img id="lightbox-img" class="lightbox-img" src="asset/porsche-taycan-turbo-s-2.jpg" width="1920" height="1080" alt="Selected Porsche gallery photograph">
     </div>
   </dialog>
 
@@ -170,7 +181,7 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche911turbos.html">911 Turbo S (992)</a></li>
               <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
               <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>

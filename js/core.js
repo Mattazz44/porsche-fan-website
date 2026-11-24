@@ -2,6 +2,37 @@
   'use strict';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = typeof window.gsap !== 'undefined' && !prefersReducedMotion;
+  const hasScrollTrigger = hasGsap && typeof window.ScrollTrigger !== 'undefined';
+
+  if (hasScrollTrigger) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+  }
+  if (hasGsap) {
+    document.documentElement.classList.add('has-gsap');
+  }
+
+  function initPageTransitions() {
+    if (prefersReducedMotion) return;
+
+    const main = document.getElementById('main-content');
+    if (hasGsap && main && !main.querySelector('.hero')) {
+      const heroTitle = main.querySelector('.page-hero-title, .detail-article h1');
+      const heroLead = main.querySelector('.page-hero-lead, .detail-subtitle');
+      const breadcrumb = main.querySelector('.breadcrumb-nav');
+
+      const tl = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
+      if (breadcrumb) {
+        tl.fromTo(breadcrumb, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, clearProps: 'transform' });
+      }
+      if (heroTitle) {
+        tl.fromTo(heroTitle, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, clearProps: 'transform' }, breadcrumb ? '-=0.2' : 0);
+      }
+      if (heroLead) {
+        tl.fromTo(heroLead, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, clearProps: 'transform' }, '-=0.32');
+      }
+    }
+  }
 
   function initHeaderScroll() {
     const header = document.querySelector('.site-header');
@@ -69,10 +100,38 @@
   }
 
   function initScrollReveal() {
-    const nodes = document.querySelectorAll('.reveal');
+    const nodes = Array.from(document.querySelectorAll('.reveal'));
     if (!nodes.length) return;
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    if (prefersReducedMotion) {
+      nodes.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    if (hasScrollTrigger) {
+      nodes.forEach((el) => {
+        window.gsap.fromTo(
+          el,
+          { autoAlpha: 0, y: 28 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.72,
+            ease: 'power3.out',
+            clearProps: 'transform',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 90%',
+              once: true,
+              onEnter: () => el.classList.add('is-visible')
+            }
+          }
+        );
+      });
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
       nodes.forEach((el) => el.classList.add('is-visible'));
       return;
     }
@@ -84,7 +143,7 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
 
     nodes.forEach((el) => observer.observe(el));
   }
@@ -112,30 +171,49 @@
   function animateNumber(el, target, decimals, duration) {
     if (!el) return;
     const dec = Number(decimals) || 0;
-    const ms = Number(duration) || 520;
+    const ms = Number(duration) || 560;
+    const endVal = Number(target);
+
+    const format = (val) => (dec > 0 ? val.toFixed(dec) : Math.round(val).toLocaleString('en-US'));
 
     if (prefersReducedMotion) {
-      el.textContent = dec > 0 ? Number(target).toFixed(dec) : Math.round(target).toLocaleString('en-US');
+      el.textContent = format(endVal);
       return;
     }
 
     const parsedStart = parseFloat(String(el.textContent).replace(/,/g, ''));
     const startVal = Number.isFinite(parsedStart) ? parsedStart : 0;
-    const endVal = Number(target);
-    const startTime = performance.now();
 
+    if (hasGsap) {
+      if (el._gsapTween) el._gsapTween.kill();
+      const counter = { val: startVal };
+      el._gsapTween = window.gsap.to(counter, {
+        val: endVal,
+        duration: ms / 1000,
+        ease: 'power3.out',
+        onUpdate: () => {
+          el.textContent = format(counter.val);
+        },
+        onComplete: () => {
+          el.textContent = format(endVal);
+          el._gsapTween = null;
+        }
+      });
+      return;
+    }
+
+    const startTime = performance.now();
     if (el._rafId) cancelAnimationFrame(el._rafId);
 
     function tick(now) {
       const elapsed = now - startTime;
       const progress = Math.min(1, elapsed / ms);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = startVal + (endVal - startVal) * eased;
-      el.textContent = dec > 0 ? current.toFixed(dec) : Math.round(current).toLocaleString('en-US');
+      el.textContent = format(startVal + (endVal - startVal) * eased);
       if (progress < 1) {
         el._rafId = requestAnimationFrame(tick);
       } else {
-        el.textContent = dec > 0 ? endVal.toFixed(dec) : Math.round(endVal).toLocaleString('en-US');
+        el.textContent = format(endVal);
         el._rafId = null;
       }
     }
@@ -171,11 +249,14 @@
 
   window.PorscheCore = {
     prefersReducedMotion,
+    hasGsap,
+    hasScrollTrigger,
     animateNumber,
     bindTablistKeyboard
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    initPageTransitions();
     initHeaderScroll();
     initMobileNav();
     initScrollReveal();

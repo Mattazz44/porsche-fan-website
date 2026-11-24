@@ -4,8 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Porsche Experience | Street Models Lineup</title>
-  <meta name="description" content="Explore Porsche road-legal sports cars, mid-engine roadsters, executive hybrids, and 800-volt electric sedans with verified specifications.">
+  <title>Porsche Experience | Street Models Lineup &amp; Technical Compare</title>
+  <meta name="description" content="Inspect Porsche road-legal sports cars, mid-engine RS models, executive hybrids, and 800-volt electric sedans with verified specifications and live side-by-side comparison.">
+
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +19,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="js/data.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/subpages.js" defer></script>
 </head>
@@ -75,10 +82,10 @@
           <div>
             <h1 class="page-hero-title">The Street Lineup</h1>
             <p class="page-hero-lead">
-              Developed in Weissach and calibrated for public asphalt. Filter by architecture or search by model code to open full technical dossiers.
+              Developed in Weissach and calibrated for public asphalt. Filter by architecture, open dedicated technical dossiers, or select models to compare side by side.
             </p>
           </div>
-          <p id="catalog-count" class="hero-meta-label" aria-live="polite">5 models shown</p>
+          <p id="catalog-count" class="hero-meta-label" aria-live="polite">6 models shown</p>
         </div>
       </div>
     </header>
@@ -92,140 +99,55 @@
           <button type="button" class="filter-pill" data-filter="electrified" aria-pressed="false">Electric &amp; Hybrid</button>
         </div>
 
-        <div class="catalog-search-group">
-          <label for="catalog-search" class="catalog-search-label">Search</label>
-          <input id="catalog-search" type="search" class="catalog-search-input" placeholder="e.g. Taycan, 911, Spyder">
+        <div class="catalog-toolbar-right">
+          <div class="catalog-search-group">
+            <label for="catalog-search" class="catalog-search-label">Search</label>
+            <input id="catalog-search" type="search" class="catalog-search-input" placeholder="e.g. Taycan, 911, GT4 RS">
+          </div>
+          <button type="button" id="compare-open-btn" class="btn-ghost compare-open-btn">Compare (2)</button>
         </div>
       </div>
     </section>
 
     <section class="container catalog-section" aria-label="Road vehicle cards">
       <div id="catalog-grid" class="catalog-list">
-        <article class="catalog-card catalog-card--featured reveal" data-category="911" data-keywords="911 turbo s 992 twin turbo flat 6 awd">
+        <article class="catalog-card catalog-card--featured reveal" data-category="911" data-keywords="911 turbo s 992.2 t-hybrid twin turbo flat 6 awd">
           <div class="catalog-card-media">
             <img
-              src="asset/911.jpeg"
-              width="736"
-              height="920"
-              alt="Silver Porsche 911 Turbo S driving at speed"
+              src="asset/porsche-911-turbo-s-992.jpg"
+              width="1920"
+              height="1281"
+              alt="Porsche 911 Turbo S Type 992.2 coupe rear three-quarter view in studio lighting"
             >
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Flagship Rear-Engine AWD</span>
-              <h2 class="catalog-card-title">Porsche 911 Turbo S (992)</h2>
+              <span class="catalog-card-tag">Flagship Rear-Engine T-Hybrid AWD</span>
+              <h2 class="catalog-card-title">Porsche 911 Turbo S (992.2)</h2>
               <p class="catalog-card-desc">
-                The daily-usable supercar benchmark combining a 3.7-liter twin-turbocharged boxer engine with active aerodynamics and carbon-ceramic brakes.
+                The daily-usable supercar benchmark combining a 3.6-liter twin-turbocharged T-Hybrid flat-six with active aerodynamics and carbon-ceramic brakes.
               </p>
             </div>
             <div class="catalog-card-specs tabular-nums">
-              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">2.7 s</span></div>
-              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">330 km/h</span></div>
-              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">650 PS</span></div>
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">2.5 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">320 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">711 PS</span></div>
             </div>
-            <div>
-              <a class="btn-primary" href="porsche911.html">Read 911 Turbo S Dossier</a>
+            <div class="card-actions-row">
+              <a class="btn-primary" href="porsche911turbos.html">Read About 911 Turbo S</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-turbo-s" aria-pressed="false">+ Compare</button>
             </div>
           </div>
         </article>
 
-        <article class="catalog-card reveal" data-category="electrified" data-keywords="taycan turbo s 800v electric ev overboost">
+        <article class="catalog-card reveal" data-category="911" data-keywords="911 gt3 rs 992 weissach track drs downforce swan neck">
           <div class="catalog-card-media">
             <img
-              src="asset/Porsche Taycan !!.jpeg"
-              width="736"
-              height="981"
+              src="asset/porsche-911-gt3-rs-992.jpg"
+              width="1920"
+              height="1068"
               loading="lazy"
-              alt="Porsche Taycan Turbo S cornering on a coastal mountain road"
-            >
-          </div>
-          <div class="catalog-card-body">
-            <div>
-              <span class="catalog-card-tag">800-Volt Electric Flagship</span>
-              <h2 class="catalog-card-title">Taycan Turbo S</h2>
-              <p class="catalog-card-desc">
-                Dual permanent-magnet motors with a 2-speed rear axle deliver repeatable high-voltage thrust and 320 kW DC fast charging.
-              </p>
-            </div>
-            <div class="catalog-card-specs tabular-nums">
-              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">2.4 s</span></div>
-              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">260 km/h</span></div>
-              <div><span class="mini-spec-label">Overboost</span><span class="mini-spec-value">952 PS</span></div>
-            </div>
-            <div>
-              <a class="btn-ghost" href="porschetaycan.html">Read Taycan Dossier</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="catalog-card reveal" data-category="mid-engine" data-keywords="718 spyder rs mid engine flat 6 roadster gt3">
-          <div class="catalog-card-media">
-            <img
-              src="asset/Porsche 718 Spyder RS.jpeg"
-              data-fallback="asset/Porsche 718 Spyder RS.jpeg"
-              width="736"
-              height="981"
-              loading="lazy"
-              alt="Porsche 718 Spyder RS open-top mid-engine roadster"
-            >
-          </div>
-          <div class="catalog-card-body">
-            <div>
-              <span class="catalog-card-tag">Naturally Aspirated Roadster</span>
-              <h2 class="catalog-card-title">718 Spyder RS</h2>
-              <p class="catalog-card-desc">
-                Houses the 9,000 rpm 4.0-liter naturally aspirated flat-six from the GT3 Cup program inside a lightweight 1,410 kg mid-engine chassis.
-              </p>
-            </div>
-            <div class="catalog-card-specs tabular-nums">
-              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.4 s</span></div>
-              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">308 km/h</span></div>
-              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">500 PS</span></div>
-            </div>
-            <div>
-              <a class="btn-ghost" href="porsche718.html">Read 718 Spyder RS Dossier</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="catalog-card reveal" data-category="electrified" data-keywords="panamera turbo e-hybrid v8 executive sedan">
-          <div class="catalog-card-media">
-            <img
-              src="asset/Panamera.jpeg"
-              width="736"
-              height="1104"
-              loading="lazy"
-              alt="Porsche Panamera Turbo E-Hybrid executive liftback"
-            >
-          </div>
-          <div class="catalog-card-body">
-            <div>
-              <span class="catalog-card-tag">Executive Plug-In Hybrid</span>
-              <h2 class="catalog-card-title">Panamera Turbo E-Hybrid</h2>
-              <p class="catalog-card-desc">
-                Combines a 4.0-liter twin-turbo V8 and integrated PDK electric motor with Porsche Active Ride suspension for four-door composure.
-              </p>
-            </div>
-            <div class="catalog-card-specs tabular-nums">
-              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.2 s</span></div>
-              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">315 km/h</span></div>
-              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">680 PS</span></div>
-            </div>
-            <div>
-              <a class="btn-ghost" href="porschepanamera.html">Read Panamera Dossier</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="catalog-card reveal" data-category="911" data-keywords="911 gt3 rs 992 weissach track drs downforce">
-          <div class="catalog-card-media">
-            <img
-              src="asset/porsche aesthetic.jpeg"
-              data-fallback="asset/porsche aesthetic.jpeg"
-              width="736"
-              height="864"
-              loading="lazy"
-              alt="Porsche 911 GT3 RS parked alongside Taycan and GT lineup"
+              alt="Porsche 911 GT3 RS Type 992 displayed on dark studio plinth with swan-neck DRS rear wing"
             >
           </div>
           <div class="catalog-card-body">
@@ -241,8 +163,129 @@
               <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">296 km/h</span></div>
               <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">525 PS</span></div>
             </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche911gt3rs.html">Read About 911 GT3 RS</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-gt3-rs" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="electrified" data-keywords="taycan turbo s 800v electric ev overboost j1">
+          <div class="catalog-card-media">
+            <img
+              src="asset/porsche-taycan-turbo-s-2.jpg"
+              width="1920"
+              height="1080"
+              loading="lazy"
+              alt="2024 Porsche Taycan Turbo S J1 II all-electric sports sedan on dark Porsche stage"
+            >
+          </div>
+          <div class="catalog-card-body">
             <div>
-              <a class="btn-ghost" href="performance.html#gt3-rs">View Track Telemetry</a>
+              <span class="catalog-card-tag">800-Volt Electric Flagship</span>
+              <h2 class="catalog-card-title">Taycan Turbo S (J1 II)</h2>
+              <p class="catalog-card-desc">
+                Dual permanent-magnet motors with a 2-speed rear axle deliver repeatable high-voltage thrust and 320 kW DC fast charging.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">2.4 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">260 km/h</span></div>
+              <div><span class="mini-spec-label">Overboost</span><span class="mini-spec-value">952 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porschetaycan.html">Read About Taycan Turbo S</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="taycan-turbo-s" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="mid-engine" data-keywords="718 cayman gt4 rs 982 mid engine coupe weissach flat 6">
+          <div class="catalog-card-media">
+            <img
+              src="asset/porsche-718-cayman-gt4-rs.jpg"
+              width="1920"
+              height="1067"
+              loading="lazy"
+              alt="Porsche 718 Cayman GT4 RS Type 982 Weissach Package coupe"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">Mid-Engine Weissach Coupe</span>
+              <h2 class="catalog-card-title">718 Cayman GT4 RS</h2>
+              <p class="catalog-card-desc">
+                Places the 9,000 rpm 4.0-liter naturally aspirated GT3 flat-six in the mid-engine Cayman chassis with swan-neck aero and NACA hood ducts.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.4 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">315 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">500 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche718gt4rs.html">Read About 718 GT4 RS</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="718-gt4-rs" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="mid-engine" data-keywords="718 spyder rs mid engine flat 6 roadster gt3">
+          <div class="catalog-card-media">
+            <img
+              src="asset/porsche-718-spyder-rs.jpg"
+              width="1920"
+              height="1177"
+              loading="lazy"
+              alt="Porsche 718 Spyder RS Type 982 open-top mid-engine roadster"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">Naturally Aspirated Roadster</span>
+              <h2 class="catalog-card-title">718 Spyder RS</h2>
+              <p class="catalog-card-desc">
+                Houses the 9,000 rpm 4.0-liter naturally aspirated flat-six from the GT3 Cup program inside a lightweight 1,410 kg mid-engine chassis.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.4 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">308 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">500 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche718.html">Read About 718 Spyder RS</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="718-spyder-rs" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="electrified" data-keywords="panamera turbo e-hybrid v8 executive sedan 972 g3">
+          <div class="catalog-card-media">
+            <img
+              src="asset/porsche-panamera-g3-2.jpg"
+              width="1920"
+              height="1278"
+              loading="lazy"
+              alt="Madeira Gold Porsche Panamera Type 972 G3 Turbo E-Hybrid executive liftback"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">Executive Plug-In Hybrid (G3)</span>
+              <h2 class="catalog-card-title">Panamera Turbo E-Hybrid</h2>
+              <p class="catalog-card-desc">
+                Combines a 4.0-liter twin-turbo V8 and integrated PDK electric motor with Porsche Active Ride suspension for four-door composure.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.2 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">315 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">680 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porschepanamera.html">Read About Panamera</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="panamera-turbo-ehybrid" aria-pressed="false">+ Compare</button>
             </div>
           </div>
         </article>
@@ -254,7 +297,66 @@
         <button type="button" id="catalog-reset" class="btn-primary">Reset Filters</button>
       </div>
     </section>
+
+    <section id="compare-workbench" class="compare-workbench" data-default-compare="911-turbo-s,911-gt3-rs" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="compare-header">
+          <div>
+            <p class="section-kicker">Side-by-Side Technical Matrix</p>
+            <h2 id="compare-heading" class="section-heading">Compare Porsche Models</h2>
+            <p id="compare-status-text" class="compare-status-text" aria-live="polite">Comparing 911 Turbo S (992.2) vs 911 GT3 RS (992)</p>
+          </div>
+          <div class="compare-header-actions">
+            <button type="button" id="compare-swap-btn" class="btn-ghost">Swap Slots</button>
+            <button type="button" id="compare-clear-btn" class="btn-ghost">Clear All</button>
+          </div>
+        </div>
+
+        <div class="compare-presets" role="group" aria-label="Quick comparison presets">
+          <button type="button" class="filter-pill" data-compare-pair="911-turbo-s,911-gt3-rs">911 Turbo S vs 911 GT3 RS</button>
+          <button type="button" class="filter-pill" data-compare-pair="718-gt4-rs,718-spyder-rs">718 GT4 RS vs 718 Spyder RS</button>
+          <button type="button" class="filter-pill" data-compare-pair="taycan-turbo-s,panamera-turbo-ehybrid">Taycan vs Panamera</button>
+          <button type="button" class="filter-pill" data-compare-pair="911-turbo-s,porsche-959">992 Turbo S vs 1986 959</button>
+        </div>
+
+        <div class="compare-controls-grid">
+          <div class="compare-slot">
+            <label for="compare-slot-1" class="compare-slot-label">Model 01</label>
+            <select id="compare-slot-1" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-slot-2" class="compare-slot-label">Model 02</label>
+            <select id="compare-slot-2" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-slot-3" class="compare-slot-label">Model 03 (Optional)</label>
+            <select id="compare-slot-3" class="compare-select"></select>
+          </div>
+          <div class="compare-slot">
+            <label for="compare-quick-filter" class="compare-slot-label">Quick Add by Name</label>
+            <input id="compare-quick-filter" type="search" class="catalog-search-input compare-quick-input" placeholder="Type e.g. 963, 919, GT4, 959">
+          </div>
+        </div>
+
+        <div id="compare-quick-chips" class="compare-quick-chips" hidden aria-live="polite"></div>
+
+        <div id="compare-table-wrap" class="compare-table-wrap" aria-live="polite"></div>
+      </div>
+    </section>
   </main>
+
+  <aside id="compare-tray" class="compare-tray" aria-label="Selected models for comparison" hidden>
+    <div class="container compare-tray-inner">
+      <div class="compare-tray-meta">
+        <span id="compare-tray-count" class="compare-tray-count tabular-nums">2 of 3 models selected</span>
+        <div id="compare-tray-list" class="compare-tray-list"></div>
+      </div>
+      <div class="compare-tray-actions">
+        <button type="button" id="compare-tray-jump" class="btn-primary">View Comparison</button>
+        <button type="button" id="compare-tray-clear" class="btn-ghost">Clear</button>
+      </div>
+    </div>
+  </aside>
 
   <footer class="site-footer">
     <div class="container">
@@ -287,9 +389,9 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
-              <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
-              <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
+              <li><a class="footer-nav-link" href="porsche911turbos.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche911gt3rs.html">911 GT3 RS (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche718gt4rs.html">718 Cayman GT4 RS</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>
             </ul>
           </div>

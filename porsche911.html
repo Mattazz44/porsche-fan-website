@@ -7,6 +7,10 @@
   <title>Porsche 911 Turbo S (992) | Vehicle Dossier</title>
   <meta name="description" content="Technical specifications, engineering overview, and photo gallery for the Porsche 911 Turbo S (Generation 992).">
 
+  <link rel="icon" type="image/png" sizes="64x64" href="asset/favicon-crest.png">
+  <link rel="shortcut icon" type="image/png" href="asset/favicon-crest.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="asset/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +19,8 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/subpages.js" defer></script>
 </head>
@@ -74,22 +80,23 @@
       <aside class="detail-aside reveal">
         <div class="detail-profile-frame is-photo">
           <img
-            src="asset/911.jpeg"
-            width="736"
-            height="920"
-            alt="Porsche 911 Turbo S driving at speed on open road"
+            src="asset/porsche-911-turbo-s-992.jpg"
+            width="1920"
+            height="1281"
+            alt="Porsche 911 Turbo S Type 992.2 coupe rear three-quarter view"
           >
         </div>
 
         <section class="spec-sheet" aria-label="Technical specifications">
           <h2 class="spec-sheet-title">Technical Specifications</h2>
           <dl class="spec-list tabular-nums">
-            <div class="spec-row"><dt>Model</dt><dd>Porsche 911 Turbo S (992)</dd></div>
-            <div class="spec-row"><dt>Engine</dt><dd>3.7L Twin-Turbocharged Flat-6</dd></div>
-            <div class="spec-row"><dt>Power</dt><dd>641 bhp (650 PS) @ 6,750 rpm</dd></div>
-            <div class="spec-row"><dt>Torque</dt><dd>590 lb-ft (800 Nm) @ 2,500 rpm</dd></div>
-            <div class="spec-row"><dt>0-100 km/h</dt><dd>2.7 seconds (Sport Chrono)</dd></div>
-            <div class="spec-row"><dt>Top Speed</dt><dd>330 km/h (205 mph)</dd></div>
+            <div class="spec-row"><dt>Model</dt><dd>Porsche 911 Turbo S (992.2 T-Hybrid)</dd></div>
+            <div class="spec-row"><dt>Production</dt><dd>2025 - Present (992.1: 2020 - 2025)</dd></div>
+            <div class="spec-row"><dt>Engine</dt><dd>3.6L Twin-Turbo Flat-6 T-Hybrid</dd></div>
+            <div class="spec-row"><dt>Power</dt><dd>711 PS / 701 hp (523 kW) Combined</dd></div>
+            <div class="spec-row"><dt>Torque</dt><dd>800 Nm (590 lb-ft)</dd></div>
+            <div class="spec-row"><dt>0-100 km/h</dt><dd>2.5 seconds (992.1: 2.7 s)</dd></div>
+            <div class="spec-row"><dt>Top Speed</dt><dd>320 km/h (992.1: 330 km/h)</dd></div>
             <div class="spec-row"><dt>Drive Layout</dt><dd>Rear-Engined, All-Wheel Drive (AWD)</dd></div>
           </dl>
         </section>
@@ -101,7 +108,7 @@
         <p class="detail-class"><strong>Class:</strong> High-Performance Sports Car / Flagship Grand Tourer</p>
 
         <p>
-          Since its debut in 1963, the Porsche 911 has served as the architectural reference point for sports cars worldwide. In its 992-generation Turbo S specification, it pairs daily-driven composure with relentless all-wheel-drive acceleration while preserving the unmistakable rear-engine silhouette.
+          Since its debut in 1963, the Porsche 911 has served as the architectural reference point for sports cars worldwide. Building on the 650 PS 992.1 generation (2020 to 2025), the 992.2 Turbo S adopts T-Hybrid electric exhaust-gas turbocharging to deliver 711 PS and 0 to 100 km/h acceleration in 2.5 seconds.
         </p>
 
         <blockquote>
@@ -110,30 +117,35 @@
         </blockquote>
 
         <p>
-          Positioned behind the rear axle sits a 3,745 cc twin-turbocharged boxer engine featuring variable turbine geometry. Channeling power through an 8-speed Porsche Doppelkupplung (PDK) transmission and active all-wheel drive, the Turbo S integrates adaptive front spoiler lips and a multi-position rear wing to balance downforce across high-speed sweepers.
+          Positioned behind the rear axle, the twin-turbocharged boxer powertrain channels 800 Nm through an 8-speed Porsche Doppelkupplung (PDK) transmission and active all-wheel drive. Adaptive front cooling flaps and a multi-position rear wing balance drag and downforce across high-speed sweepers.
         </p>
 
         <h2>Engineering Evolution</h2>
         <p>
-          A widened front and rear track pairs with Porsche Active Suspension Management (PASM) and electro-hydraulic roll control to keep cornering loads flat. Armed with standard Porsche Ceramic Composite Brakes (PCCB) and rear-axle steering, the 992 Turbo S delivers repeatable stability across alpine passes and circuit straights alike.
+          A widened track pairs with Porsche Active Suspension Management (PASM) and electro-hydraulic roll stabilization to keep cornering loads flat. Armed with standard Porsche Ceramic Composite Brakes (PCCB) and rear-axle steering, the 992 Turbo S delivers repeatable stability across alpine passes and circuit straights alike.
         </p>
+
+        <div class="detail-actions">
+          <a class="btn-primary" href="models.html?compare=911-turbo-s,911-gt3-rs#compare-workbench">Compare With 911 GT3 RS</a>
+          <a class="btn-ghost" href="models.html?compare=911-turbo-s,taycan-turbo-s#compare-workbench">Compare With Taycan Turbo S</a>
+        </div>
       </article>
     </div>
 
     <section class="gallery-section reveal" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" class="section-heading">Gallery</h2>
       <div class="gallery-grid">
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 Turbo S cruising highway">
-          <img src="asset/911.jpeg" width="736" height="920" loading="lazy" alt="Silver Porsche 911 Turbo S driving at speed">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 Turbo S Type 992.2 rear three-quarter">
+          <img src="asset/porsche-911-turbo-s-992.jpg" width="1920" height="1281" loading="lazy" alt="Porsche 911 Turbo S Type 992.2 rear studio view">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 cockpit detailing">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2025/09/Porsche-911-Carrera-T-992.2-15.jpg" data-fallback="asset/porsche aesthetic.jpeg" width="1200" height="675" loading="lazy" alt="Porsche 911 interior cockpit craft">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 Turbo S Type 992.2 front studio profile">
+          <img src="asset/porsche-911-turbo-s-992-2.jpg" width="1920" height="1283" loading="lazy" alt="Porsche 911 Turbo S Type 992.2 front three-quarter in IAA studio lighting">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 classic silhouette view">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2025/09/Porsche-911-Carrera-T-992.2-12.jpg" data-fallback="asset/911.jpeg" width="1200" height="675" loading="lazy" alt="Porsche 911 exterior rear three-quarter silhouette">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Carmine Red Porsche 911 Turbo S Type 992">
+          <img src="asset/porsche-911-turbo-s-992-3.jpg" width="1920" height="1052" loading="lazy" alt="Carmine Red Porsche 911 Turbo S Type 992 with Motorsport hood stripes">
         </button>
-        <button type="button" class="gallery-trigger" aria-label="Enlarge Porsche 911 rear lightbar view">
-          <img src="https://www.stuttcars.com/wp-content/uploads/2025/09/Porsche-911-Carrera-T-992.2-1.jpg" data-fallback="asset/porsche aesthetic.jpeg" width="1200" height="675" loading="lazy" alt="Porsche 911 rear lightbar flyby">
+        <button type="button" class="gallery-trigger" aria-label="Enlarge Jet Black Porsche 911 Turbo S Type 992 road profile">
+          <img src="asset/porsche-911-turbo-s-992-4.jpg" width="1920" height="1280" loading="lazy" alt="Jet Black Porsche 911 Turbo S Type 992 coupe at Adelaide Rally">
         </button>
       </div>
     </section>
@@ -149,7 +161,7 @@
           <button type="button" id="lightbox-close" class="btn-primary">Close</button>
         </div>
       </div>
-      <img id="lightbox-img" class="lightbox-img" src="asset/911.jpeg" width="1200" height="675" alt="Selected Porsche gallery photograph">
+      <img id="lightbox-img" class="lightbox-img" src="asset/porsche-911-turbo-s-992.jpg" width="1920" height="1281" alt="Selected Porsche gallery photograph">
     </div>
   </dialog>
 
@@ -176,7 +188,7 @@
           <div>
             <h2 class="footer-nav-heading">Featured Dossiers</h2>
             <ul class="footer-nav-list">
-              <li><a class="footer-nav-link" href="porsche911.html">911 Turbo S (992)</a></li>
+              <li><a class="footer-nav-link" href="porsche911turbos.html">911 Turbo S (992)</a></li>
               <li><a class="footer-nav-link" href="porschetaycan.html">Taycan Turbo S</a></li>
               <li><a class="footer-nav-link" href="porsche718.html">718 Spyder RS</a></li>
               <li><a class="footer-nav-link" href="porsche963.html">Porsche 963 LMDh</a></li>

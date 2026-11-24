@@ -120,6 +120,15 @@
   }
 }
 
+/* Suppress CSS fallback keyframes when GSAP timeline orchestrates hero entry */
+html.has-gsap .hero-title-word,
+html.has-gsap .hero-lead,
+html.has-gsap .hero-actions {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 .hero-lead {
   max-width: 48ch;
   margin-top: 22px;
