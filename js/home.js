@@ -9,34 +9,34 @@
     const hero = document.querySelector('.hero');
     const heroMedia = document.getElementById('hero-media');
     const cta = document.getElementById('hero-cta');
+    const exhaustAudio = document.getElementById('porsche-exhaust');
     const videoToggle = document.getElementById('hero-video-toggle');
     const videoFrame = document.getElementById('hero-video-frame');
 
     if (core.hasGsap && hero) {
-      const tl = window.gsap.timeline({ defaults: { ease: 'power4.out' } });
-      tl.fromTo('.hero-kicker', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+      const tl = window.gsap.timeline({ defaults: { ease: core.luxuryEase } });
+      tl.fromTo('.hero-kicker', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.12 })
         .fromTo(
           '.hero-title-word',
           { yPercent: 112, autoAlpha: 0 },
-          { yPercent: 0, autoAlpha: 1, duration: 0.9, stagger: 0.12 },
-          '-=0.3'
+          { yPercent: 0, autoAlpha: 1, duration: 1.36, stagger: 0.16 },
+          '-=0.82'
         )
-        .fromTo('.hero-lead', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.45')
-        .fromTo('.hero-actions', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.48')
-        .fromTo('.hero-side', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.48');
+        .fromTo('.hero-lead', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 1.22 }, '-=0.92')
+        .fromTo('.hero-actions', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 1.18 }, '-=0.95')
+        .fromTo('.hero-side', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.18 }, '-=0.95');
     }
 
     if (hero && heroMedia && !core.prefersReducedMotion) {
       if (core.hasScrollTrigger) {
         window.gsap.to(heroMedia, {
-          yPercent: 15,
-          scale: 1.07,
+          yPercent: 14,
           ease: 'none',
           scrollTrigger: {
             trigger: hero,
             start: 'top top',
             end: 'bottom top',
-            scrub: 0.6
+            scrub: 0.9
           }
         });
       } else {
@@ -46,37 +46,92 @@
           ticking = true;
           requestAnimationFrame(() => {
             const offset = Math.min(window.scrollY, hero.offsetHeight);
-            heroMedia.style.transform = `translate3d(0, ${(offset * 0.18).toFixed(1)}px, 0)`;
+            heroMedia.style.transform = `translate3d(0, ${(offset * 0.16).toFixed(1)}px, 0)`;
             ticking = false;
           });
         }, { passive: true });
       }
     }
 
-    if (cta && !core.prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
-      if (core.hasGsap) {
-        const moveX = window.gsap.quickTo(cta, 'x', { duration: 0.35, ease: 'power3.out' });
-        const moveY = window.gsap.quickTo(cta, 'y', { duration: 0.35, ease: 'power3.out' });
-        cta.addEventListener('mousemove', (e) => {
-          const rect = cta.getBoundingClientRect();
-          moveX((e.clientX - (rect.left + rect.width / 2)) * 0.18);
-          moveY((e.clientY - (rect.top + rect.height / 2)) * 0.24);
-        });
-        cta.addEventListener('mouseleave', () => {
-          moveX(0);
-          moveY(0);
-        });
-      } else {
-        cta.addEventListener('mousemove', (e) => {
-          const rect = cta.getBoundingClientRect();
-          const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.16;
-          const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
-          cta.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
-        });
-        cta.addEventListener('mouseleave', () => {
-          cta.style.transform = '';
-        });
+    // Play real recorded Porsche exhaust rev at 0ms simultaneously with active 750ms carbon curtain exit
+    const heroInner = hero ? hero.querySelector('.hero-inner') : null;
+    const transitionCurtain = document.getElementById('page-transition-curtain');
+
+    window.addEventListener('pageshow', () => {
+      if (cta) {
+        cta.dataset.revving = 'false';
+        cta.classList.remove('is-revving');
       }
+      if (heroInner) {
+        heroInner.classList.remove('is-exiting');
+        heroInner.style.opacity = '';
+        heroInner.style.transform = '';
+      }
+      if (transitionCurtain) {
+        transitionCurtain.classList.remove('is-sweeping');
+        transitionCurtain.style.transform = '';
+      }
+    });
+
+    if (cta) {
+      cta.addEventListener('click', (e) => {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const targetHref = cta.getAttribute('href') || 'models.html';
+        e.preventDefault();
+        if (cta.dataset.revving === 'true') return;
+        cta.dataset.revving = 'true';
+        cta.classList.add('is-revving');
+
+        // Start exhaust roar at 0ms
+        if (exhaustAudio) {
+          try {
+            exhaustAudio.pause();
+            exhaustAudio.currentTime = 0;
+            exhaustAudio.volume = 0.95;
+            const playPromise = exhaustAudio.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+              playPromise.catch(() => {});
+            }
+          } catch {}
+        }
+
+        // Start active hero exit + carbon curtain sweep at the exact same 0ms frame
+        if (core.prefersReducedMotion) {
+          window.location.href = targetHref;
+          return;
+        }
+
+        if (core.hasGsap && transitionCurtain && heroInner) {
+          window.gsap.killTweensOf([heroInner, transitionCurtain]);
+          window.gsap.to(heroInner, {
+            opacity: 0,
+            y: -36,
+            duration: 0.68,
+            ease: core.luxuryEase
+          });
+          window.gsap.fromTo(
+            transitionCurtain,
+            { yPercent: 102, y: 0 },
+            {
+              yPercent: 0,
+              duration: 0.75,
+              ease: core.luxuryEase,
+              onStart: () => {
+                transitionCurtain.style.pointerEvents = 'all';
+              },
+              onComplete: () => {
+                window.location.href = targetHref;
+              }
+            }
+          );
+        } else {
+          if (heroInner) heroInner.classList.add('is-exiting');
+          if (transitionCurtain) transitionCurtain.classList.add('is-sweeping');
+          setTimeout(() => {
+            window.location.href = targetHref;
+          }, 750);
+        }
+      });
     }
 
     if (videoToggle && videoFrame) {
@@ -178,13 +233,13 @@
         window.gsap.killTweensOf(stageImg);
         window.gsap.fromTo(
           stageImg,
-          { opacity: 0.18, scale: 1.075 },
-          { opacity: 1, scale: 1, duration: 0.68, ease: 'power3.out', clearProps: 'transform' }
+          { opacity: 0.22 },
+          { opacity: 1, duration: 1.18, ease: core.luxuryEase }
         );
         window.gsap.fromTo(
           [titleEl, summaryEl, drivetrainEl],
-          { opacity: 0.35, y: 8 },
-          { opacity: 1, y: 0, duration: 0.42, stagger: 0.04, ease: 'power2.out', clearProps: 'transform' }
+          { opacity: 0.35, y: 10 },
+          { opacity: 1, y: 0, duration: 1.12, stagger: 0.06, ease: core.luxuryEase, clearProps: 'transform' }
         );
       } else {
         stageImg.classList.remove('is-transitioning');
@@ -215,9 +270,9 @@
       speedUnitEl.textContent = model.topSpeedUnit;
       powerUnitEl.textContent = model.powerUnit;
 
-      core.animateNumber(accelEl, model.accel, model.accelDecimals, 540);
-      core.animateNumber(speedEl, model.topSpeed, 0, 620);
-      core.animateNumber(powerEl, model.power, 0, 680);
+      core.animateNumber(accelEl, model.accel, model.accelDecimals, 1120);
+      core.animateNumber(speedEl, model.topSpeed, 0, 1200);
+      core.animateNumber(powerEl, model.power, 0, 1260);
 
       if (!core.hasGsap && animate) {
         stageImg.classList.add('is-transitioning');
@@ -353,9 +408,9 @@
         fills.forEach(({ fill, percent }, idx) => {
           window.gsap.to(fill, {
             width: `${percent}%`,
-            duration: 0.72,
-            delay: idx * 0.08,
-            ease: 'power3.out'
+            duration: 1.2,
+            delay: idx * 0.1,
+            ease: core.luxuryEase
           });
         });
       } else {
@@ -401,7 +456,7 @@
         el.textContent = '';
         el.appendChild(span);
         if (suffix) el.appendChild(document.createTextNode(suffix));
-        core.animateNumber(span, target, 0, 860);
+        core.animateNumber(span, target, 0, 1280);
       };
 
       if (core.prefersReducedMotion || (!core.hasScrollTrigger && !('IntersectionObserver' in window))) {
@@ -477,8 +532,13 @@
         if (shouldScroll && core.hasGsap) {
           window.gsap.fromTo(
             imgEl,
-            { opacity: 0.25, scale: 1.06 },
-            { opacity: 1, scale: 1, duration: 0.62, ease: 'power3.out', clearProps: 'transform' }
+            { opacity: 0.24 },
+            { opacity: 1, duration: 1.18, ease: core.luxuryEase }
+          );
+          window.gsap.fromTo(
+            [yearEl, titleEl, copyEl, factEl],
+            { opacity: 0.35, y: 12 },
+            { opacity: 1, y: 0, duration: 1.12, stagger: 0.06, ease: core.luxuryEase, clearProps: 'transform' }
           );
         } else {
           imgEl.style.opacity = '1';

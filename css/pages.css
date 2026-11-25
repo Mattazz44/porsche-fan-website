@@ -72,20 +72,28 @@
   padding: 8px 18px;
   background: transparent;
   border: 1px solid var(--control-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  transition: background-color var(--dur-fast) ease,
-    border-color var(--dur-fast) ease,
-    color var(--dur-fast) ease;
+  transition: background-color 0.5s var(--ease-race),
+    border-color 0.5s var(--ease-race),
+    color 0.5s var(--ease-race),
+    transform 0.15s var(--ease-race);
 }
 
 .filter-pill:hover {
-  border-color: var(--text-primary);
+  border-color: rgba(213, 0, 28, 0.65);
   color: var(--text-primary);
+}
+
+.filter-pill:active,
+.compare-quick-chip:active,
+.compare-col-remove:active,
+.era-jump-link:active {
+  transform: scale(0.97);
 }
 
 .filter-pill[aria-pressed="true"] {
@@ -115,6 +123,12 @@
   border-radius: var(--radius-btn);
   color: var(--text-primary);
   font-size: 0.9375rem;
+  transition: border-color 0.5s var(--ease-race), background-color 0.5s var(--ease-race);
+}
+
+.catalog-search-input:hover,
+.catalog-search-input:focus {
+  border-color: var(--porsche-red);
 }
 
 .catalog-search-input::placeholder {
@@ -146,7 +160,13 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--dur-fast) ease, transform var(--dur-mid) var(--ease-race);
+  transition: border-color 0.5s var(--ease-race),
+    background-color 0.5s var(--ease-race),
+    transform 0.15s var(--ease-race);
+}
+
+.catalog-card[hidden] {
+  display: none !important;
 }
 
 .catalog-card::after,
@@ -161,7 +181,7 @@
   background: var(--porsche-red);
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 420ms var(--ease-race);
+  transition: transform 0.5s var(--ease-race);
   pointer-events: none;
   z-index: 3;
 }
@@ -177,8 +197,11 @@
 }
 
 .catalog-card:hover {
-  border-color: var(--control-border);
-  transform: translateY(-4px);
+  border-color: rgba(213, 0, 28, 0.65);
+}
+
+.catalog-card:active {
+  transform: scale(0.97);
 }
 
 .catalog-card-media {
@@ -201,11 +224,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--dur-slow) var(--ease-race);
+  transition: transform 0.5s var(--ease-race);
 }
 
 .catalog-card:hover .catalog-card-media img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .catalog-card-body {
@@ -260,6 +283,12 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-top: 2px;
+  transition: transform 0.5s var(--ease-race), color 0.5s var(--ease-race);
+}
+
+.catalog-card:hover .mini-spec-value,
+.track-dossier-row:hover .mini-spec-value {
+  transform: translateX(3px);
 }
 
 /* Empty / Loading / Error states (R-27) */
@@ -301,22 +330,15 @@
   background: var(--bg-panel);
   border: 1px solid var(--hairline);
   scroll-margin-top: calc(var(--nav-height) + 24px);
-  transition: border-color var(--dur-fast) ease;
+  transition: border-color 0.5s var(--ease-race), transform 0.15s var(--ease-race);
 }
 
 .track-dossier-row:hover {
-  border-color: var(--control-border);
+  border-color: rgba(213, 0, 28, 0.65);
 }
 
-.track-dossier-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--dur-slow) var(--ease-race);
-}
-
-.track-dossier-row:hover .track-dossier-media img {
-  transform: scale(1.04);
+.track-dossier-row:active {
+  transform: scale(0.97);
 }
 
 .track-dossier-row:nth-child(even) .track-dossier-media {
@@ -333,6 +355,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s var(--ease-race);
+}
+
+.track-dossier-row:hover .track-dossier-media img {
+  transform: scale(1.03);
 }
 
 .track-dossier-body {
@@ -407,7 +434,7 @@
   background: var(--porsche-red);
   transform-origin: top center;
   transform: scaleY(0);
-  transition: transform 90ms linear;
+  transition: transform 420ms var(--ease-race);
 }
 
 .timeline-items {
@@ -441,16 +468,15 @@
   background: var(--bg-void);
   border: 2px solid var(--control-border);
   transform: rotate(45deg);
-  transition: background-color 280ms var(--ease-race),
-    border-color 280ms var(--ease-race),
-    transform 280ms var(--ease-race);
+  transition: background-color 0.65s var(--ease-race),
+    border-color 0.65s var(--ease-race);
 }
 
 .timeline-item.is-reached .timeline-node,
 .timeline-item.is-visible .timeline-node {
   background: var(--porsche-red);
   border-color: var(--porsche-red);
-  transform: rotate(45deg) scale(1.15);
+  transform: rotate(45deg);
 }
 
 .timeline-opposite {
@@ -493,19 +519,19 @@
   border-radius: var(--radius-sharp);
   overflow: hidden;
   opacity: 0;
-  transition: opacity 680ms var(--ease-race),
-    transform 680ms var(--ease-race),
-    border-color var(--dur-fast) ease;
+  transition: opacity 1.3s var(--ease-race),
+    transform 1.3s var(--ease-race),
+    border-color 0.5s var(--ease-race);
 }
 
 .timeline-item--left .timeline-card {
   grid-column: 1;
-  transform: translateX(-34px);
+  transform: translateX(-36px);
 }
 
 .timeline-item--right .timeline-card {
   grid-column: 3;
-  transform: translateX(34px);
+  transform: translateX(36px);
 }
 
 .timeline-item.is-visible .timeline-card {
@@ -514,7 +540,12 @@
 }
 
 .timeline-card:hover {
-  border-color: var(--control-border);
+  border-color: rgba(213, 0, 28, 0.65);
+}
+
+.timeline-card:active {
+  transform: scale(0.97);
+  transition-duration: 0.15s;
 }
 
 .timeline-card-media {
@@ -527,11 +558,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--dur-slow) var(--ease-race);
+  transition: transform 0.5s var(--ease-race);
 }
 
 .timeline-card:hover .timeline-card-media img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .timeline-card-body {
@@ -748,20 +779,30 @@
   width: 100%;
   padding: 0;
   border: 1px solid var(--hairline);
+  border-radius: var(--radius-sharp);
   background: var(--bg-panel);
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  transition: border-color 0.5s var(--ease-race), transform 0.15s var(--ease-race);
+}
+
+.gallery-trigger:hover {
+  border-color: rgba(213, 0, 28, 0.65);
+}
+
+.gallery-trigger:active {
+  transform: scale(0.97);
 }
 
 .gallery-trigger img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--dur-slow) var(--ease-race);
+  transition: transform 0.5s var(--ease-race);
 }
 
 .gallery-trigger:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* Native <dialog> Lightbox */
@@ -901,6 +942,12 @@
   color: var(--text-primary);
   font-size: 0.9rem;
   font-family: var(--font-sans);
+  transition: border-color 0.5s var(--ease-race);
+}
+
+.compare-select:hover,
+.compare-select:focus {
+  border-color: var(--porsche-red);
 }
 
 .compare-select option,
@@ -933,11 +980,11 @@
   padding: 6px 14px;
   background: var(--bg-carbon);
   border: 1px solid var(--control-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   color: var(--text-primary);
   font-size: 0.8125rem;
   font-weight: 600;
-  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+  transition: border-color 0.5s var(--ease-race), background-color 0.5s var(--ease-race);
 }
 
 .compare-quick-chip:hover,
@@ -1112,17 +1159,16 @@
   vertical-align: middle;
 }
 
-/* Floating Compare Tray */
+/* Floating Compare Tray (flat carbon elevation with 1px hairline border, zero drop-shadow) */
 .compare-tray {
   position: fixed;
   inset-inline: 0;
   bottom: 0;
   z-index: 900;
-  background: rgba(14, 14, 16, 0.95);
+  background: rgba(17, 17, 19, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-top: 1px solid var(--control-border);
-  box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.55);
+  border-top: 1px solid var(--hairline-hover);
   padding-block: 12px;
 }
 

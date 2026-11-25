@@ -85,24 +85,25 @@
               Developed in Weissach and calibrated for public asphalt. Filter by architecture, open dedicated technical dossiers, or select models to compare side by side.
             </p>
           </div>
-          <p id="catalog-count" class="hero-meta-label" aria-live="polite">6 models shown</p>
+          <p id="catalog-count" class="hero-meta-label" aria-live="polite">10 models shown</p>
         </div>
       </div>
     </header>
 
     <section class="container" aria-label="Filter and search road models">
       <div class="catalog-toolbar">
-        <div class="filter-pills" role="group" aria-label="Filter models by powertrain">
+        <div class="filter-pills" role="group" aria-label="Filter models by powertrain and body architecture">
           <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">All Models</button>
           <button type="button" class="filter-pill" data-filter="911" aria-pressed="false">911 Series</button>
           <button type="button" class="filter-pill" data-filter="mid-engine" aria-pressed="false">Mid-Engine</button>
-          <button type="button" class="filter-pill" data-filter="electrified" aria-pressed="false">Electric &amp; Hybrid</button>
+          <button type="button" class="filter-pill" data-filter="electric" aria-pressed="false">Electric &amp; Hybrid</button>
+          <button type="button" class="filter-pill" data-filter="suv-gt" aria-pressed="false">SUV &amp; GT</button>
         </div>
 
         <div class="catalog-toolbar-right">
           <div class="catalog-search-group">
             <label for="catalog-search" class="catalog-search-label">Search</label>
-            <input id="catalog-search" type="search" class="catalog-search-input" placeholder="e.g. Taycan, 911, GT4 RS">
+            <input id="catalog-search" type="search" class="catalog-search-input" placeholder="e.g. Dakar, Macan, Cayenne, GT4 RS">
           </div>
           <button type="button" id="compare-open-btn" class="btn-ghost compare-open-btn">Compare (2)</button>
         </div>
@@ -111,7 +112,7 @@
 
     <section class="container catalog-section" aria-label="Road vehicle cards">
       <div id="catalog-grid" class="catalog-list">
-        <article class="catalog-card catalog-card--featured reveal" data-category="911" data-keywords="911 turbo s 992.2 t-hybrid twin turbo flat 6 awd">
+        <article class="catalog-card catalog-card--featured reveal" data-category="911" data-keywords="911 series turbo s 992.2 t-hybrid twin turbo flat 6 awd">
           <div class="catalog-card-media">
             <img
               src="asset/porsche-911-turbo-s-992.jpg"
@@ -122,7 +123,7 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Flagship Rear-Engine T-Hybrid AWD</span>
+              <span class="catalog-card-tag">3.6L Twin-Turbo Flat-6 T-Hybrid</span>
               <h2 class="catalog-card-title">Porsche 911 Turbo S (992.2)</h2>
               <p class="catalog-card-desc">
                 The daily-usable supercar benchmark combining a 3.6-liter twin-turbocharged T-Hybrid flat-six with active aerodynamics and carbon-ceramic brakes.
@@ -140,7 +141,7 @@
           </div>
         </article>
 
-        <article class="catalog-card reveal" data-category="911" data-keywords="911 gt3 rs 992 weissach track drs downforce swan neck">
+        <article class="catalog-card reveal" data-category="911" data-keywords="911 series gt3 rs 992 weissach track drs downforce swan neck">
           <div class="catalog-card-media">
             <img
               src="asset/porsche-911-gt3-rs-992.jpg"
@@ -152,7 +153,7 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Road-Legal Track Aero</span>
+              <span class="catalog-card-tag">4.0L Naturally Aspirated Flat-6</span>
               <h2 class="catalog-card-title">911 GT3 RS (992)</h2>
               <p class="catalog-card-desc">
                 Equipped with a central radiator layout and active DRS swan-neck rear wing producing 860 kg of total downforce at 285 km/h.
@@ -170,7 +171,67 @@
           </div>
         </article>
 
-        <article class="catalog-card reveal" data-category="electrified" data-keywords="taycan turbo s 800v electric ev overboost j1">
+        <article class="catalog-card reveal" data-category="911" data-keywords="911 dakar 992 rally offroad all terrain twin turbo flat 6 paris dakar">
+          <div class="catalog-card-media">
+            <img
+              src="assets/images/models/911-dakar.jpg"
+              width="1920"
+              height="1167"
+              loading="lazy"
+              alt="Shade Green Metallic 2023 Porsche 911 Dakar Type 992 rally coupe with all-terrain tires"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">3.0L Twin-Turbo Flat-6 | Rally AWD</span>
+              <h2 class="catalog-card-title">Porsche 911 Dakar (992)</h2>
+              <p class="catalog-card-desc">
+                Limited to 2,500 units with +50 mm raised rally suspension, High Level lift mode, CFRP GT3 hood, and Rallye Launch Control for gravel and sand.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.4 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">240 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">480 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche911dakar.html">Read About 911 Dakar</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-dakar" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="911" data-keywords="911 s/t st 992 manual purist lightweight 60th anniversary flat 6">
+          <div class="catalog-card-media">
+            <img
+              src="assets/images/models/911-st.jpg"
+              width="1920"
+              height="1235"
+              loading="lazy"
+              alt="Shore Blue Metallic 2024 Porsche 911 S/T Type 992 lightweight purist coupe"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">4.0L NA Flat-6 | 6-Speed Manual</span>
+              <h2 class="catalog-card-title">Porsche 911 S/T (992)</h2>
+              <p class="catalog-card-desc">
+                Pairs the 9,000 rpm GT3 RS engine with a short-ratio manual gearbox, single-mass flywheel, and CFRP bodywork in a 1,380 kg DIN purist chassis.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.7 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">300 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">525 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porsche911st.html">Read About 911 S/T</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="911-st" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="electric gt" data-keywords="taycan turbo s 800v electric hybrid ev overboost j1 gt sedan">
           <div class="catalog-card-media">
             <img
               src="asset/porsche-taycan-turbo-s-2.jpg"
@@ -182,7 +243,7 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">800-Volt Electric Flagship</span>
+              <span class="catalog-card-tag">800V Dual-Motor Electric GT</span>
               <h2 class="catalog-card-title">Taycan Turbo S (J1 II)</h2>
               <p class="catalog-card-desc">
                 Dual permanent-magnet motors with a 2-speed rear axle deliver repeatable high-voltage thrust and 320 kW DC fast charging.
@@ -212,7 +273,7 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Mid-Engine Weissach Coupe</span>
+              <span class="catalog-card-tag">4.0L Mid-Engine Weissach Coupe</span>
               <h2 class="catalog-card-title">718 Cayman GT4 RS</h2>
               <p class="catalog-card-desc">
                 Places the 9,000 rpm 4.0-liter naturally aspirated GT3 flat-six in the mid-engine Cayman chassis with swan-neck aero and NACA hood ducts.
@@ -242,7 +303,7 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Naturally Aspirated Roadster</span>
+              <span class="catalog-card-tag">4.0L Mid-Engine Open Roadster</span>
               <h2 class="catalog-card-title">718 Spyder RS</h2>
               <p class="catalog-card-desc">
                 Houses the 9,000 rpm 4.0-liter naturally aspirated flat-six from the GT3 Cup program inside a lightweight 1,410 kg mid-engine chassis.
@@ -260,10 +321,70 @@
           </div>
         </article>
 
-        <article class="catalog-card reveal" data-category="electrified" data-keywords="panamera turbo e-hybrid v8 executive sedan 972 g3">
+        <article class="catalog-card reveal" data-category="electric suv" data-keywords="macan turbo electric xab ppe 800v dual motor electric suv awd">
           <div class="catalog-card-media">
             <img
-              src="asset/porsche-panamera-g3-2.jpg"
+              src="assets/images/models/macan-electric.jpg"
+              width="1920"
+              height="1440"
+              loading="lazy"
+              alt="White Porsche Macan Turbo Electric Type XAB presented on dark stage at Porsche Zentrum Zurich"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">Dual-Motor Electric | 800V PPE SUV</span>
+              <h2 class="catalog-card-title">Porsche Macan Turbo Electric</h2>
+              <p class="catalog-card-desc">
+                Built on the 800-volt PPE platform with a 100 kWh battery, 1,130 Nm overboost torque, electronic rear differential, and rear-axle steering.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.3 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">260 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">639 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porschemacanelectric.html">Read About Macan Electric</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="macan-turbo-electric" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="suv gt" data-keywords="cayenne turbo gt coupe v8 twin turbo suv nordschleife record titanium">
+          <div class="catalog-card-media">
+            <img
+              src="assets/images/models/cayenne-turbo-gt.jpg"
+              width="1920"
+              height="1061"
+              loading="lazy"
+              alt="Dark Green Metallic Porsche Cayenne Turbo GT Coupe with Neodyme 22-inch GT Design wheels"
+            >
+          </div>
+          <div class="catalog-card-body">
+            <div>
+              <span class="catalog-card-tag">4.0L Twin-Turbo V8 | Nordschleife SUV</span>
+              <h2 class="catalog-card-title">Porsche Cayenne Turbo GT</h2>
+              <p class="catalog-card-desc">
+                Weissach-calibrated SUV Coupé featuring a carbon roof, central titanium exhaust, PCCB ceramic brakes, and a 7:38.925 Nordschleife lap record.
+              </p>
+            </div>
+            <div class="catalog-card-specs tabular-nums">
+              <div><span class="mini-spec-label">0-100 km/h</span><span class="mini-spec-value">3.3 s</span></div>
+              <div><span class="mini-spec-label">Top Speed</span><span class="mini-spec-value">305 km/h</span></div>
+              <div><span class="mini-spec-label">Power</span><span class="mini-spec-value">659 PS</span></div>
+            </div>
+            <div class="card-actions-row">
+              <a class="btn-ghost" href="porschecayenneturbogt.html">Read About Cayenne Turbo GT</a>
+              <button type="button" class="btn-ghost compare-toggle-btn" data-compare-toggle="cayenne-turbo-gt" aria-pressed="false">+ Compare</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="catalog-card reveal" data-category="electric sedan gt" data-keywords="panamera turbo e-hybrid electric hybrid v8 executive sedan gt 972 g3">
+          <div class="catalog-card-media">
+            <img
+              src="assets/images/models/panamera-hybrid.jpg"
               width="1920"
               height="1278"
               loading="lazy"
@@ -272,8 +393,8 @@
           </div>
           <div class="catalog-card-body">
             <div>
-              <span class="catalog-card-tag">Executive Plug-In Hybrid (G3)</span>
-              <h2 class="catalog-card-title">Panamera Turbo E-Hybrid</h2>
+              <span class="catalog-card-tag">4.0L V8 + E-Motor | Executive GT</span>
+              <h2 class="catalog-card-title">Porsche Panamera Turbo E-Hybrid</h2>
               <p class="catalog-card-desc">
                 Combines a 4.0-liter twin-turbo V8 and integrated PDK electric motor with Porsche Active Ride suspension for four-door composure.
               </p>
@@ -314,9 +435,10 @@
 
         <div class="compare-presets" role="group" aria-label="Quick comparison presets">
           <button type="button" class="filter-pill" data-compare-pair="911-turbo-s,911-gt3-rs">911 Turbo S vs 911 GT3 RS</button>
-          <button type="button" class="filter-pill" data-compare-pair="718-gt4-rs,718-spyder-rs">718 GT4 RS vs 718 Spyder RS</button>
+          <button type="button" class="filter-pill" data-compare-pair="911-dakar,porsche-959">911 Dakar vs 1986 959</button>
+          <button type="button" class="filter-pill" data-compare-pair="macan-turbo-electric,cayenne-turbo-gt">Macan Electric vs Cayenne Turbo GT</button>
           <button type="button" class="filter-pill" data-compare-pair="taycan-turbo-s,panamera-turbo-ehybrid">Taycan vs Panamera</button>
-          <button type="button" class="filter-pill" data-compare-pair="911-turbo-s,porsche-959">992 Turbo S vs 1986 959</button>
+          <button type="button" class="filter-pill" data-compare-pair="718-gt4-rs,718-spyder-rs">718 GT4 RS vs 718 Spyder RS</button>
         </div>
 
         <div class="compare-controls-grid">
@@ -404,6 +526,10 @@
       </div>
     </div>
   </footer>
+
+  <div id="page-transition-curtain" class="transition-curtain transition-curtain--enter" aria-hidden="true">
+    <span class="transition-curtain-edge"></span>
+  </div>
 </body>
 
 </html>

@@ -17,20 +17,66 @@
     let activeFilter = 'all';
     let lastCompareJumpQuery = '';
 
-    function applyFilter() {
+    function matchesCategory(cardCat, filterValue) {
+      if (!filterValue || filterValue === 'all') return true;
+      const tokens = String(cardCat || '').toLowerCase().trim().split(/\s+/).filter(Boolean);
+      const target = String(filterValue).toLowerCase().trim();
+      if (target === 'series' || target === '911') {
+        return tokens.includes('911') || tokens.includes('series');
+      }
+      if (target === 'electric' || target === 'electric-hybrid' || target === 'electrified') {
+        return tokens.includes('electric') || tokens.includes('hybrid') || tokens.includes('electric-hybrid') || tokens.includes('electrified');
+      }
+      if (target === 'suv-gt' || target === 'suv') {
+        return tokens.includes('suv') || tokens.includes('sedan') || tokens.includes('gt') || tokens.includes('suv-gt');
+      }
+      return tokens.includes(target);
+    }
+
+    function applyFilter(animateCards) {
       const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
       const isCompareKeyword = query === 'compare' || query === 'vs' || query.startsWith('compare ');
       let visibleCount = 0;
+      const visibleCards = [];
 
       cards.forEach((card) => {
         const cat = card.getAttribute('data-category') || '';
-        const haystack = (card.getAttribute('data-keywords') || card.textContent).toLowerCase();
-        const matchesCat = activeFilter === 'all' || cat === activeFilter;
+        const haystack = `${card.getAttribute('data-keywords') || ''} ${card.textContent}`.toLowerCase();
+        const matchesCat = matchesCategory(cat, activeFilter);
         const matchesQuery = !query || isCompareKeyword || haystack.includes(query);
         const show = matchesCat && matchesQuery;
         card.hidden = !show;
-        if (show) visibleCount += 1;
+        if (show) {
+          visibleCount += 1;
+          card.classList.add('is-visible');
+          visibleCards.push(card);
+        }
       });
+
+      if (animateCards && visibleCards.length && core.hasGsap && !core.prefersReducedMotion) {
+        window.gsap.killTweensOf(visibleCards);
+        window.gsap.fromTo(
+          visibleCards,
+          { autoAlpha: 0, y: 16 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.75,
+            stagger: 0.06,
+            ease: core.luxuryEase || 'power3.out',
+            clearProps: 'transform'
+          }
+        );
+      } else if (visibleCards.length) {
+        visibleCards.forEach((c) => {
+          c.style.opacity = '1';
+          c.style.visibility = 'visible';
+        });
+      }
+
+      if (core.hasScrollTrigger && window.ScrollTrigger) {
+        window.ScrollTrigger.refresh();
+      }
 
       if (statusLine) {
         statusLine.textContent = isCompareKeyword
@@ -52,12 +98,12 @@
       btn.addEventListener('click', () => {
         activeFilter = btn.getAttribute('data-filter') || 'all';
         filterBtns.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-        applyFilter();
+        applyFilter(true);
       });
     });
 
     if (searchInput) {
-      searchInput.addEventListener('input', applyFilter);
+      searchInput.addEventListener('input', () => applyFilter(false));
     }
 
     if (resetBtn) {
@@ -65,12 +111,12 @@
         activeFilter = 'all';
         if (searchInput) searchInput.value = '';
         filterBtns.forEach((b) => b.setAttribute('aria-pressed', b.getAttribute('data-filter') === 'all' ? 'true' : 'false'));
-        applyFilter();
+        applyFilter(true);
         if (searchInput) searchInput.focus();
       });
     }
 
-    applyFilter();
+    applyFilter(false);
   }
 
   function initCompareWorkbench() {
@@ -155,7 +201,8 @@
           items.forEach((m) => {
             const opt = document.createElement('option');
             opt.value = m.id;
-            opt.textContent = `${m.name} (${m.power})`;
+            const shortPower = String(m.power).split(' (')[0];
+            opt.textContent = `${m.name} (${shortPower})`;
             og.appendChild(opt);
           });
           select.appendChild(og);
@@ -544,12 +591,35 @@
           item.classList.add('is-visible', 'is-reached');
         });
       } else if (core.hasScrollTrigger) {
-        items.forEach((item) => {
+        items.forEach((item, idx) => {
+          const card = item.querySelector('.timeline-card');
+          if (idx === 0) {
+            item.classList.add('is-visible', 'is-reached');
+            return;
+          }
+          const isLeft = item.classList.contains('timeline-item--left');
+          const offsetX = window.innerWidth <= 860 ? 0 : (isLeft ? -36 : 36);
+          const offsetY = window.innerWidth <= 860 ? 28 : 0;
+          if (card) {
+            window.gsap.set(card, { autoAlpha: 0, x: offsetX, y: offsetY });
+          }
           window.ScrollTrigger.create({
             trigger: item,
-            start: 'top 82%',
+            start: 'top 84%',
             once: true,
-            onEnter: () => item.classList.add('is-visible', 'is-reached')
+            onEnter: () => {
+              item.classList.add('is-visible', 'is-reached');
+              if (card) {
+                window.gsap.to(card, {
+                  autoAlpha: 1,
+                  x: 0,
+                  y: 0,
+                  duration: 1.32,
+                  ease: core.luxuryEase || 'power3.out',
+                  clearProps: 'transform'
+                });
+              }
+            }
           });
         });
       } else {
@@ -667,7 +737,17 @@
     });
   }
 
+  function initPageEntranceCurtain() {
+    const curtain = document.getElementById('page-transition-curtain');
+    if (!curtain) return;
+    curtain.addEventListener('animationend', () => {
+      curtain.classList.remove('transition-curtain--enter');
+      curtain.style.transform = 'translate3d(0, -102%, 0)';
+    }, { once: true });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initPageEntranceCurtain();
     initModelsCatalog();
     initCompareWorkbench();
     initHistoryJumpSync();

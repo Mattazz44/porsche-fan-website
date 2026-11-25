@@ -1,22 +1,23 @@
 :root {
-  /* Core dark asphalt and carbon surfaces */
-  --bg-void: #0a0a0a;
-  --bg-carbon: #111111;
-  --bg-panel: #161618;
-  --bg-elevated: #1c1c20;
+  /* Core dark carbon and asphalt surfaces (Weissach Anti-Slop specification) */
+  --bg-void: #0b0b0c;
+  --bg-carbon: #111113;
+  --bg-panel: #151518;
+  --bg-elevated: #1b1b1f;
 
-  /* Typography ink hierarchy (WCAG AA+ verified) */
+  /* Typography ink hierarchy (WCAG AA+ verified on #0B0B0C & #111113) */
   --text-primary: #f5f5f7;
   --text-secondary: #b8bcc4;
   --text-muted: #9498a3;
 
   /* Single brand accent: Porsche Guards Red */
   --porsche-red: #d5001c;
-  --porsche-red-hover: #b80018;
+  --porsche-red-hover: #b50017;
   --porsche-red-text: #ff4d5e;
 
-  /* Architectural hairlines and interactive control borders (>= 3:1 on #111111) */
+  /* Architectural 1px hairlines and interactive control borders (>= 3:1 on #111113) */
   --hairline: rgba(255, 255, 255, 0.12);
+  --hairline-hover: rgba(255, 255, 255, 0.34);
   --hairline-subtle: rgba(255, 255, 255, 0.08);
   --control-border: #6d717a;
 
@@ -24,25 +25,29 @@
   --font-display: 'Syne', 'Montserrat', sans-serif;
   --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Radii hierarchy (R-11: structured sharp geometry, not all-pill) */
-  --radius-sharp: 2px;
-  --radius-btn: 4px;
-  --radius-pill: 999px;
+  /* Sharp Weissach instrument geometry (0px - 2px, zero pills) */
+  --radius-sharp: 0px;
+  --radius-btn: 2px;
+  --radius-pill: 2px;
 
-  /* Spacing & motion */
+  /* Spacing & luxury cinematic motion curves */
   --container-max: 1320px;
   --gutter: clamp(1rem, 3vw, 2.5rem);
   --nav-height: 76px;
-  --ease-race: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-fast: 220ms;
-  --dur-mid: 480ms;
-  --dur-slow: 720ms;
+  --ease-race: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 500ms;
+  --dur-mid: 850ms;
+  --dur-slow: 1250ms;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 html {
@@ -136,7 +141,27 @@ p {
   margin: 0;
 }
 
-.tabular-nums {
+/* Tabular figures across all telemetry, years, power, and specification readouts */
+.tabular-nums,
+.spec-list,
+.spec-row dd,
+.mini-spec-value,
+.telemetry-value,
+.benchmark-num,
+.hero-meta-value,
+.stage-model-year,
+.stage-drivetrain,
+.model-selector-power,
+.aero-bar-figure,
+.dossier-specs-table td,
+.era-btn-year,
+.era-jump-list,
+.timeline-era-year,
+.timeline-era-fact,
+.timeline-opposite-year,
+.timeline-card-year-inline,
+.compare-table,
+.compare-tray-count {
   font-variant-numeric: tabular-nums;
 }
 

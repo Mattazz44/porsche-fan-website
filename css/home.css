@@ -55,8 +55,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.68) 48%, rgba(10, 10, 10, 0.25) 100%),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.2) 45%, rgba(10, 10, 10, 0.96) 100%);
+    linear-gradient(90deg, rgba(11, 11, 12, 0.93) 0%, rgba(11, 11, 12, 0.68) 48%, rgba(11, 11, 12, 0.25) 100%),
+    linear-gradient(180deg, rgba(11, 11, 12, 0.56) 0%, rgba(11, 11, 12, 0.2) 45%, rgba(11, 11, 12, 0.96) 100%);
 }
 
 .hero-inner {
@@ -66,6 +66,12 @@
   display: flex;
   flex-direction: column;
   gap: 36px;
+  transition: opacity 680ms var(--ease-race), transform 680ms var(--ease-race);
+}
+
+.hero-inner.is-exiting {
+  opacity: 0;
+  transform: translate3d(0, -34px, 0);
 }
 
 .hero-grid {
@@ -101,15 +107,15 @@
   display: inline-block;
   transform: translateY(105%);
   opacity: 0;
-  animation: kineticReveal 0.85s var(--ease-race) forwards;
+  animation: kineticReveal 1.32s var(--ease-race) forwards;
 }
 
 .hero-title-line:nth-child(2) .hero-title-word {
-  animation-delay: 140ms;
+  animation-delay: 180ms;
 }
 
 .hero-title-line:nth-child(3) .hero-title-word {
-  animation-delay: 260ms;
+  animation-delay: 340ms;
   color: var(--text-primary);
 }
 
@@ -135,8 +141,8 @@ html.has-gsap .hero-actions {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   color: var(--text-secondary);
   opacity: 0;
-  transform: translateY(14px);
-  animation: fadeSlideUp 0.8s var(--ease-race) 360ms forwards;
+  transform: translateY(18px);
+  animation: fadeSlideUp 1.22s var(--ease-race) 460ms forwards;
 }
 
 @keyframes fadeSlideUp {
@@ -153,8 +159,8 @@ html.has-gsap .hero-actions {
   gap: 14px;
   margin-top: 30px;
   opacity: 0;
-  transform: translateY(14px);
-  animation: fadeSlideUp 0.8s var(--ease-race) 460ms forwards;
+  transform: translateY(18px);
+  animation: fadeSlideUp 1.18s var(--ease-race) 600ms forwards;
 }
 
 .magnetic-cta {
@@ -279,20 +285,28 @@ html.has-gsap .hero-actions {
   padding: 10px 20px;
   background: transparent;
   border: 1px solid var(--control-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  transition: background-color var(--dur-fast) ease,
-    border-color var(--dur-fast) ease,
-    color var(--dur-fast) ease;
+  transition: background-color 0.5s var(--ease-race),
+    border-color 0.5s var(--ease-race),
+    color 0.5s var(--ease-race),
+    transform 0.15s var(--ease-race);
 }
 
 .category-tab:hover {
-  border-color: var(--text-primary);
+  border-color: rgba(213, 0, 28, 0.65);
   color: var(--text-primary);
+}
+
+.category-tab:active,
+.model-selector-btn:active,
+.subsystem-btn:active,
+.era-btn:active {
+  transform: scale(0.97);
 }
 
 .category-tab[aria-selected="true"] {
@@ -373,6 +387,11 @@ html.has-gsap .hero-actions {
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sharp);
   overflow: hidden;
+  transition: border-color 0.5s var(--ease-race);
+}
+
+.showcase-stage:hover {
+  border-color: var(--hairline-hover);
 }
 
 .stage-visual {
@@ -387,13 +406,11 @@ html.has-gsap .hero-actions {
   height: 100%;
   object-fit: cover;
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 320ms var(--ease-race), transform 620ms var(--ease-race);
+  transition: opacity 1.15s var(--ease-race);
 }
 
 .stage-image.is-transitioning {
-  opacity: 0.15;
-  transform: scale(1.04);
+  opacity: 0.18;
 }
 
 .stage-status {
@@ -635,7 +652,7 @@ html.has-gsap .hero-actions {
   height: 100%;
   background: var(--porsche-red);
   width: var(--bar-width, 0%);
-  transition: width 650ms var(--ease-race);
+  transition: width 1.2s var(--ease-race);
 }
 
 .dossier-specs-table {
@@ -779,6 +796,11 @@ html.has-gsap .hero-actions {
   background: var(--bg-panel);
   border: 1px solid var(--hairline);
   padding: clamp(20px, 3vw, 36px);
+  transition: border-color 0.5s var(--ease-race);
+}
+
+.timeline-viewer:hover {
+  border-color: var(--hairline-hover);
 }
 
 .timeline-media {
@@ -792,7 +814,7 @@ html.has-gsap .hero-actions {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 320ms ease, transform 600ms var(--ease-race);
+  transition: opacity 1.15s var(--ease-race);
 }
 
 .timeline-era-year {

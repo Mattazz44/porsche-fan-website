@@ -5,6 +5,37 @@
   const hasGsap = typeof window.gsap !== 'undefined' && !prefersReducedMotion;
   const hasScrollTrigger = hasGsap && typeof window.ScrollTrigger !== 'undefined';
 
+  // Exact solver for cubic-bezier(0.16, 1, 0.3, 1) luxury deceleration curve
+  function createCubicBezier(x1, y1, x2, y2) {
+    const cx = 3 * x1;
+    const bx = 3 * (x2 - x1) - cx;
+    const ax = 1 - cx - bx;
+    const cy = 3 * y1;
+    const by = 3 * (y2 - y1) - cy;
+    const ay = 1 - cy - by;
+
+    const sampleX = (t) => ((ax * t + bx) * t + cx) * t;
+    const sampleDX = (t) => (3 * ax * t + 2 * bx) * t + cx;
+    const sampleY = (t) => ((ay * t + by) * t + cy) * t;
+
+    return function luxuryBezier(x) {
+      if (x <= 0) return 0;
+      if (x >= 1) return 1;
+      let t = x;
+      for (let i = 0; i < 8; i += 1) {
+        const err = sampleX(t) - x;
+        if (Math.abs(err) < 1e-6) break;
+        const d = sampleDX(t);
+        if (Math.abs(d) < 1e-6) break;
+        t -= err / d;
+      }
+      t = Math.max(0, Math.min(1, t));
+      return sampleY(t);
+    };
+  }
+
+  const luxuryEase = createCubicBezier(0.16, 1, 0.3, 1);
+
   if (hasScrollTrigger) {
     window.gsap.registerPlugin(window.ScrollTrigger);
   }
@@ -21,15 +52,15 @@
       const heroLead = main.querySelector('.page-hero-lead, .detail-subtitle');
       const breadcrumb = main.querySelector('.breadcrumb-nav');
 
-      const tl = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const tl = window.gsap.timeline({ defaults: { ease: luxuryEase } });
       if (breadcrumb) {
-        tl.fromTo(breadcrumb, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, clearProps: 'transform' });
+        tl.fromTo(breadcrumb, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 1.1, clearProps: 'transform' });
       }
       if (heroTitle) {
-        tl.fromTo(heroTitle, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, clearProps: 'transform' }, breadcrumb ? '-=0.2' : 0);
+        tl.fromTo(heroTitle, { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 1.35, clearProps: 'transform' }, breadcrumb ? '-=0.82' : 0);
       }
       if (heroLead) {
-        tl.fromTo(heroLead, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, clearProps: 'transform' }, '-=0.32');
+        tl.fromTo(heroLead, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.2, clearProps: 'transform' }, '-=0.95');
       }
     }
   }
@@ -112,12 +143,12 @@
       nodes.forEach((el) => {
         window.gsap.fromTo(
           el,
-          { autoAlpha: 0, y: 28 },
+          { autoAlpha: 0, y: 30 },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.72,
-            ease: 'power3.out',
+            duration: 1.26,
+            ease: luxuryEase,
             clearProps: 'transform',
             scrollTrigger: {
               trigger: el,
@@ -171,7 +202,7 @@
   function animateNumber(el, target, decimals, duration) {
     if (!el) return;
     const dec = Number(decimals) || 0;
-    const ms = Number(duration) || 560;
+    const ms = Number(duration) || 1150;
     const endVal = Number(target);
 
     const format = (val) => (dec > 0 ? val.toFixed(dec) : Math.round(val).toLocaleString('en-US'));
@@ -190,7 +221,7 @@
       el._gsapTween = window.gsap.to(counter, {
         val: endVal,
         duration: ms / 1000,
-        ease: 'power3.out',
+        ease: luxuryEase,
         onUpdate: () => {
           el.textContent = format(counter.val);
         },
@@ -208,7 +239,7 @@
     function tick(now) {
       const elapsed = now - startTime;
       const progress = Math.min(1, elapsed / ms);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = luxuryEase(progress);
       el.textContent = format(startVal + (endVal - startVal) * eased);
       if (progress < 1) {
         el._rafId = requestAnimationFrame(tick);
@@ -251,6 +282,7 @@
     prefersReducedMotion,
     hasGsap,
     hasScrollTrigger,
+    luxuryEase,
     animateNumber,
     bindTablistKeyboard
   };
